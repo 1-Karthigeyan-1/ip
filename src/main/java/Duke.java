@@ -26,6 +26,11 @@ public class Duke {
                 storeTask[textCount] = new Deadline(splitdeadline[1], splitdeadline[2]);
                 textSeparator(storeTask[textCount].printDescription() + "\n");
                 textCount++;
+            } else if (command.contains("event")) {
+                String[] splitevent = command.split("event |/at");
+                storeTask[textCount] = new Event(splitevent[1], splitevent[2]);
+                textSeparator(storeTask[textCount].printDescription() + "\n");
+                textCount++;
             }
 
         }
