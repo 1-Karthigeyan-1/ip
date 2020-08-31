@@ -11,15 +11,15 @@ public class Duke {
 
         startGreeting();
 
-        //Check for exit command
         while (!((command = in.nextLine()).equals("bye"))) {
             if (command.equals("list")) {
                 showList(Arrays.copyOf(storeTask, textCount));
             } else if (command.contains("done")) {
                 completeTask(storeTask, command);
-            } else {
-                storeTask[textCount] = new Task(command);
-                textSeparator( "added: " + storeTask[textCount].getDescription() + "\n");
+            } else if (command.contains("todo")){
+                String[] splittodo = command.split("todo " , 2);
+                storeTask[textCount] = new Todo(splittodo[1]);
+                textSeparator(storeTask[textCount].printDescription() + "\n");
                 textCount++;
             }
         }
@@ -45,8 +45,7 @@ public class Duke {
         int itemCount = 1;
         String itemList = "";
         for (Task item : storeText) {
-            itemList += Integer.toString(itemCount) + ".[" + item.getStatusIcon()
-                    + "]" + item.getDescription() + "\n";
+            itemList += Integer.toString(itemCount) + ". "  +  item.printDescription() + "\n";
             itemCount++;
         }
         textSeparator("Here are the tasks in your list:\n" + itemList);
@@ -57,8 +56,7 @@ public class Duke {
         int taskNumber = Integer.parseInt(splitString[1]) - 1;
         Task taskItem = storeTask[taskNumber];
         taskItem.isCompleted();
-        textSeparator("Nice! I've marked this task as done:\n" + "["
-                + taskItem.getStatusIcon() + "] " + taskItem.getDescription() + "\n");
+        textSeparator("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
 }
