@@ -19,4 +19,9 @@ public class Task {
         return this.description;
     }
 
+    public String printDescription() {
+        String output = "[" + getStatusIcon() + "] " + getDescription();
+        return output;
+    }
+
 }

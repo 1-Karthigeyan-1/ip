@@ -17,11 +17,17 @@ public class Duke {
             } else if (command.contains("done")) {
                 completeTask(storeTask, command);
             } else if (command.contains("todo")){
-                String[] splittodo = command.split("todo " , 2);
+                String[] splittodo = command.split("todo ");
                 storeTask[textCount] = new Todo(splittodo[1]);
                 textSeparator(storeTask[textCount].printDescription() + "\n");
                 textCount++;
+            } else if (command.contains("deadline")) {
+                String[] splitdeadline = command.split("deadline |/");
+                storeTask[textCount] = new Deadline(splitdeadline[1], splitdeadline[2]);
+                textSeparator(storeTask[textCount].printDescription() + "\n");
+                textCount++;
             }
+
         }
         exitCommand(command);
     }
