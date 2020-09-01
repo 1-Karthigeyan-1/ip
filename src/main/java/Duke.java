@@ -6,31 +6,33 @@ public class Duke {
     public static void main(String[] args) {
         String command;
         Task[] storeTask = new Task[100];
-        int textCount = 0;
         Scanner in = new Scanner(System.in);
 
         startGreeting();
 
         while (!((command = in.nextLine()).equals("bye"))) {
             if (command.equals("list")) {
-                showList(Arrays.copyOf(storeTask, textCount));
+                showList(Arrays.copyOf(storeTask, Task.taskCount));
             } else if (command.contains("done")) {
                 completeTask(storeTask, command);
             } else if (command.contains("todo")){
                 String[] splittodo = command.split("todo ");
-                storeTask[textCount] = new Todo(splittodo[1]);
-                textSeparator(storeTask[textCount].printDescription() + "\n");
-                textCount++;
+                storeTask[Task.taskCount] = new Todo(splittodo[1]);
+                textSeparator("Got it. I've added this task:\n"
+                        + storeTask[Task.taskCount].printDescription() + "\n");
+                Task.taskCount++;
             } else if (command.contains("deadline")) {
-                String[] splitdeadline = command.split("deadline |/");
-                storeTask[textCount] = new Deadline(splitdeadline[1], splitdeadline[2]);
-                textSeparator(storeTask[textCount].printDescription() + "\n");
-                textCount++;
+                String[] splitdeadline = command.split("deadline |/by");
+                storeTask[Task.taskCount] = new Deadline(splitdeadline[1], splitdeadline[2]);
+                textSeparator("Got it. I've added this task:\n"
+                        + storeTask[Task.taskCount].printDescription() + "\n");
+                Task.taskCount++;
             } else if (command.contains("event")) {
                 String[] splitevent = command.split("event |/at");
-                storeTask[textCount] = new Event(splitevent[1], splitevent[2]);
-                textSeparator(storeTask[textCount].printDescription() + "\n");
-                textCount++;
+                storeTask[Task.taskCount] = new Event(splitevent[1], splitevent[2]);
+                textSeparator("Got it. I've added this task:\n"
+                        + storeTask[Task.taskCount].printDescription() + "\n");
+                Task.taskCount++;
             }
 
         }
