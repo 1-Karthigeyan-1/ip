@@ -1,6 +1,8 @@
-test
-yolo
-swag
+todo wash laundry
 list
-done 1
+event meeting /at Sunday 3am
+deadline homework /by tomorrow
 list
+done 2
+list
+bye
