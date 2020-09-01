@@ -5,34 +5,42 @@ public class Duke {
 
     public static void main(String[] args) {
         String command;
+        String firstArgument;
         Task[] storeTask = new Task[100];
         Scanner in = new Scanner(System.in);
 
         startGreeting();
 
         while (!((command = in.nextLine()).equals("bye"))) {
-            if (command.equals("list")) {
+            firstArgument = Command.parseArgument(command);
+            switch(firstArgument) {
+            case Command.LIST:
                 showList(Arrays.copyOf(storeTask, Task.taskCount));
-            } else if (command.contains("done")) {
+                break;
+            case Command.DONE:
                 completeTask(storeTask, command);
-            } else if (command.contains("todo")){
+                break;
+            case Command.TODO:
                 String[] splittodo = command.split("todo ");
                 storeTask[Task.taskCount] = new Todo(splittodo[1]);
                 textSeparator("Got it. I've added this task:\n"
                         + storeTask[Task.taskCount].printDescription() + "\n");
                 Task.taskCount++;
-            } else if (command.contains("deadline")) {
+                break;
+            case Command.DEADLINE:
                 String[] splitdeadline = command.split("deadline |/by");
                 storeTask[Task.taskCount] = new Deadline(splitdeadline[1], splitdeadline[2]);
                 textSeparator("Got it. I've added this task:\n"
                         + storeTask[Task.taskCount].printDescription() + "\n");
                 Task.taskCount++;
-            } else if (command.contains("event")) {
+                break;
+            case Command.EVENT:
                 String[] splitevent = command.split("event |/at");
                 storeTask[Task.taskCount] = new Event(splitevent[1], splitevent[2]);
                 textSeparator("Got it. I've added this task:\n"
                         + storeTask[Task.taskCount].printDescription() + "\n");
                 Task.taskCount++;
+                break;
             }
 
         }
