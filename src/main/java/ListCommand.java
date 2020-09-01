@@ -1,4 +1,4 @@
-public class List {
+public class ListCommand {
 
     public static void showList(Task[] storeText) {
         int itemCount = 1;
