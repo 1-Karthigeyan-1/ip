@@ -15,7 +15,7 @@ public class Duke {
             firstArgument = Command.parseArgument(command);
             switch(firstArgument) {
             case Command.LIST:
-                showList(Arrays.copyOf(storeTask, Task.taskCount));
+                List.showList(Arrays.copyOf(storeTask, Task.taskCount));
                 break;
             case Command.DONE:
                 completeTask(storeTask, command);
@@ -60,16 +60,6 @@ public class Duke {
     public static void exitCommand(String command) {
         String exit = "Bye. Hope to see you again soon!\n";
         textSeparator(exit);
-    }
-
-    public static void showList(Task[] storeText) {
-        int itemCount = 1;
-        String itemList = "";
-        for (Task item : storeText) {
-            itemList += Integer.toString(itemCount) + ". "  +  item.printDescription() + "\n";
-            itemCount++;
-        }
-        textSeparator("Here are the tasks in your list:\n" + itemList);
     }
 
     public static void completeTask(Task[] storeTask,String command) {
