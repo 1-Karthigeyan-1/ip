@@ -9,7 +9,6 @@ public class Command {
     public static final String EVENT = "event";
     public static final String DONE = "done";
 
-
     public static void filterInput() {
         Task[] storeTask = new Task[100];
         Scanner in = new Scanner(System.in);
@@ -40,15 +39,13 @@ public class Command {
                 break;
             case BYE:
                     return;
-                    //Fallthrough
+                    //fall through
             }
-
         }
     }
 
-
     public static String[] parseArgument (String argument, String divider, int limit) {
-        return argument.split(divider, limit );
+        return argument.split(divider, limit);
     }
 
 

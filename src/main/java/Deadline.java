@@ -1,5 +1,6 @@
 public class Deadline extends Task {
     protected String by;
+    private static final String ICON = "[D]";
 
     public Deadline(String description, String by) {
         super(description);
@@ -8,7 +9,7 @@ public class Deadline extends Task {
 
     @Override
     public String printDescription() {
-        return "[D]" + super.printDescription() + " (by:" + by + ")";
+        return ICON + super.printDescription() + " (by:" + by + ")";
     }
 
 }

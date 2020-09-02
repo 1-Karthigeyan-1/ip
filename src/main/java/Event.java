@@ -1,5 +1,6 @@
 public class Event extends Task {
     protected String date;
+    private static final String ICON = "[E]";
 
     public Event(String description, String date) {
         super(description);
@@ -9,7 +10,7 @@ public class Event extends Task {
     @Override
     public String printDescription() {
 
-        return "[E]" + super.printDescription() + " (at:" + date + ")";
+        return ICON + super.printDescription() + " (at:" + date + ")";
     }
 
 }

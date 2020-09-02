@@ -1,4 +1,5 @@
 public class Todo extends Task{
+    private static final String ICON = "[T]";
 
     public Todo(String description) {
         super(description);
@@ -6,6 +7,6 @@ public class Todo extends Task{
 
     @Override
     public String printDescription() {
-        return "[T]" + super.printDescription();
+        return ICON + super.printDescription();
     }
 }
