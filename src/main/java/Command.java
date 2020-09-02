@@ -16,46 +16,39 @@ public class Command {
         String command;
         while (true) {
             command = in.nextLine();
-            String firstArgument = Command.parseArgument(command);
-            switch(firstArgument) {
-            case Command.LIST:
-                    ListCommand.showList(Arrays.copyOf(storeTask, Task.taskCount));
-                    break;
-            case Command.DONE:
-                    Duke.completeTask(storeTask, command);
-                    break;
-            case Command.TODO:
-                    String[] splittodo = command.split("todo ");
-                    storeTask[Task.taskCount] = new Todo(splittodo[1]);
-                    Duke.textSeparator("Got it. I've added this task:\n"
-                            + storeTask[Task.taskCount].printDescription() + "\n");
-                    Task.taskCount++;
-                    break;
-            case Command.DEADLINE:
-                    String[] splitdeadline = command.split("deadline |/by");
-                    storeTask[Task.taskCount] = new Deadline(splitdeadline[1], splitdeadline[2]);
-                    Duke.textSeparator("Got it. I've added this task:\n"
-                            + storeTask[Task.taskCount].printDescription() + "\n");
-                    Task.taskCount++;
-                    break;
-            case Command.EVENT:
-                    String[] splitevent = command.split("event |/at");
-                    storeTask[Task.taskCount] = new Event(splitevent[1], splitevent[2]);
-                    Duke.textSeparator("Got it. I've added this task:\n"
-                            + storeTask[Task.taskCount].printDescription() + "\n");
-                    Task.taskCount++;
-                    break;
-            case Command.BYE:
+            String[] arguments = Command.parseArgument(command, " ", 2);
+            switch(arguments[0]) {
+            case LIST:
+                Task.showList(Arrays.copyOf(storeTask, Task.taskCount));
+                break;
+            case DONE:
+                Task.completeTask(storeTask, arguments[1]);
+                break;
+            case TODO:
+                storeTask[Task.taskCount] = new Todo(arguments[1]);
+                Task.addTask(storeTask[Task.taskCount]);
+                break;
+            case DEADLINE:
+                arguments  = parseArgument(arguments[1],"/by", 0);
+                storeTask[Task.taskCount] = new Deadline(arguments[0], arguments[1]);
+                Task.addTask(storeTask[Task.taskCount]);
+                break;
+            case EVENT:
+                arguments  = parseArgument(arguments[1],"/at", 2);
+                storeTask[Task.taskCount] = new Event(arguments[0], arguments[1]);
+                Task.addTask(storeTask[Task.taskCount]);
+                break;
+            case BYE:
                     return;
+                    //Fallthrough
             }
 
         }
     }
 
 
-    public static String parseArgument (String argument) {
-        String[] argumentList = argument.split(" ",2);
-        return argumentList[0];
+    public static String[] parseArgument (String argument, String divider, int limit) {
+        return argument.split(divider, limit );
     }
 
 
