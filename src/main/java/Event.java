@@ -9,7 +9,6 @@ public class Event extends Task {
 
     @Override
     public String printDescription() {
-
         return ICON + super.printDescription() + " (at:" + date + ")";
     }
 

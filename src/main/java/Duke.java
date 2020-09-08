@@ -6,19 +6,19 @@ public class Duke {
         printExit();
     }
 
-    public static void textBorder(String displayText) {
+    public static void printBorder(String displayText) {
         String line = "____________________________________________________________\n";
         System.out.print(line + displayText + line);
     }
 
     public static void printGreeting() {
         String greet = "Hello! I'm Duke\nWhat can I do for you?\n";
-        textBorder(greet);
+        printBorder(greet);
     }
 
     public static void printExit() {
         String exit = "Bye. Hope to see you again soon!\n";
-        textBorder(exit);
+        printBorder(exit);
     }
 
 }

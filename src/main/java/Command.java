@@ -8,9 +8,10 @@ public class Command {
     public static final String DEADLINE = "deadline";
     public static final String EVENT = "event";
     public static final String DONE = "done";
-
+    public static final int MAX_TASKS = 100;
+    
     public static void filterInput() {
-        Task[] storeTask = new Task[100];
+        Task[] storeTask = new Task[MAX_TASKS];
         Scanner in = new Scanner(System.in);
         String command;
         while (true) {
@@ -38,8 +39,8 @@ public class Command {
                 Task.addTask(storeTask[Task.taskCount]);
                 break;
             case BYE:
-                    return;
-                    //fall through
+                return;
+                //fall through
             }
         }
     }

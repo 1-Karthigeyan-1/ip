@@ -27,7 +27,7 @@ public class Task {
 
     public static void addTask(Task item) {
         Task.taskCount++;
-        Duke.textBorder("Got it. I've added this task:\n"
+        Duke.printBorder("Got it. I've added this task:\n"
                 + item.printDescription() + "\n");
     }
 
@@ -35,7 +35,7 @@ public class Task {
         int taskNumber = Integer.parseInt(argument) - 1;
         Task taskItem = storeTask[taskNumber];
         taskItem.isCompleted();
-        Duke.textBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
+        Duke.printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
     public static void showList(Task[] storeText) {
@@ -43,7 +43,7 @@ public class Task {
         for (int item = 0 ; item < taskCount ; item++) {
             itemList += Integer.toString(item+1) + ". "  +  storeText[item].printDescription() + "\n";
         }
-        Duke.textBorder("Here are the tasks in your list:\n" + itemList);
+        Duke.printBorder("Here are the tasks in your list:\n" + itemList);
     }
 
 
