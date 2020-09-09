@@ -9,4 +9,12 @@ public class Todo extends Task{
     public String printDescription() {
         return ICON + super.printDescription();
     }
+
+    public static void addTodo(Task[] storeTask, String argument) throws IndexOutOfBoundsException {
+        if (argument.isBlank()) {
+            throw new IndexOutOfBoundsException();
+        }
+        storeTask[Task.taskCount] = new Todo(argument);
+        Task.addTask(storeTask[Task.taskCount]);
+    }
 }
