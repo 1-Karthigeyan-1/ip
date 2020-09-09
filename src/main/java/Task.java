@@ -27,18 +27,24 @@ public class Task {
 
     public static void addTask(Task item) {
         Task.taskCount++;
-        Duke.printBorder("Got it. I've added this task:\n"
-                + item.printDescription() + "\n");
+        Duke.printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
+
     }
 
-    public static void completeTask(Task[] storeTask,String argument) {
-        int taskNumber = Integer.parseInt(argument) - 1;
-        Task taskItem = storeTask[taskNumber];
+    public static void completeTask(Task[] storeTask,String argument) throws DukeException {
+        int taskNumber = Integer.parseInt(argument) ;
+        if ((taskNumber > taskCount) || (taskNumber <= 0)) {
+            throw new DukeException("illegal number");
+        }
+        Task taskItem = storeTask[taskNumber-1];
         taskItem.isCompleted();
         Duke.printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
-    public static void showList(Task[] storeText) {
+    public static void showList(Task[] storeText) throws DukeException {
+        if (taskCount == 0) {
+            throw new DukeException("empty list");
+        }
         String itemList = "";
         for (int item = 0 ; item < taskCount ; item++) {
             itemList += Integer.toString(item+1) + ". "  +  storeText[item].printDescription() + "\n";
