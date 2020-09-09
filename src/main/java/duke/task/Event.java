@@ -1,3 +1,7 @@
+package duke.task;
+
+import duke.command.Command;
+
 public class Event extends Task {
     protected String date;
     private static final String ICON = "[E]";

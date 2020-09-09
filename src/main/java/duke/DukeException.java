@@ -1,3 +1,5 @@
+package duke;
+
 public class DukeException extends Exception {
     protected static final String EMPTY_LIST = "empty list";
     protected static final String ILLEGAL_NUMBER = "illegal number";

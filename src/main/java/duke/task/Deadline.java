@@ -1,3 +1,7 @@
+package duke.task;
+
+import duke.command.Command;
+
 public class Deadline extends Task {
     protected String by;
     private static final String ICON = "[D]";
