@@ -17,6 +17,7 @@ public class Command {
     public static final String DEADLINE = "deadline";
     public static final String EVENT = "event";
     public static final String DONE = "done";
+    public static final String DELETE = "delete";
 
     public static void filterInput() {
         ArrayList<Task> Tasks = new ArrayList<Task>();
@@ -41,6 +42,9 @@ public class Command {
                     break;
                 case EVENT:
                     Event.addEvent(Tasks, arguments[1]);
+                    break;
+                case DELETE:
+                    Task.deleteTask(Tasks, arguments[1]);
                     break;
                 case BYE:
                     return;

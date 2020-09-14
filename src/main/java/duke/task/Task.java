@@ -58,5 +58,17 @@ public class Task {
         Duke.printBorder("Here are the tasks in your list:\n" + itemList);
     }
 
+    public static void deleteTask(ArrayList<Task> Tasks, String argument) {
+        String removalNotice = "Noted. I've removed this task:\n";
+        //TODO throw number format exception && check for valid number
+        int taskNumber = Integer.parseInt(argument);
+        Task deletedObject = Tasks.get(taskNumber-1);
+        Tasks.remove(taskNumber-1);
+        taskCount--;
+        String remainingTask = "Now you have " + taskCount + " tasks in the list\n";
+        //TODO abstract print number of Tasks
+        Duke.printBorder(removalNotice + "  " + deletedObject.printDescription() +"\n" + remainingTask);
+    }
+
 
 }
