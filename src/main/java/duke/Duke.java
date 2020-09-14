@@ -1,3 +1,7 @@
+package duke;
+
+import duke.command.Command;
+
 public class Duke {
 
     public static void main(String[] args) {
@@ -12,7 +16,7 @@ public class Duke {
     }
 
     public static void printGreeting() {
-        String greet = "Hello! I'm Duke\nWhat can I do for you?\n";
+        String greet = "Hello! I'm duke.Duke\nWhat can I do for you?\n";
         printBorder(greet);
     }
 

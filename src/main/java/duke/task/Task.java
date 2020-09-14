@@ -1,3 +1,8 @@
+package duke.task;
+
+import duke.Duke;
+import duke.DukeException;
+
 public class Task {
     protected String description;
     protected boolean isDone;
