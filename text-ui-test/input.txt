@@ -5,4 +5,11 @@ deadline homework /by tomorrow
 list
 done 2
 list
+todo homework
+list
+done 3
+delete 2
+list
+delete 1
+list
 bye
