@@ -1,6 +1,7 @@
 package duke.task;
 
 import duke.command.Command;
+import java.util.ArrayList;
 
 public class Deadline extends Task {
     protected String by;
@@ -19,16 +20,16 @@ public class Deadline extends Task {
         return ICON + super.printDescription() + " (by:" + by + ")";
     }
 
-    public static void addDeadline(Task[] storeTask, String argument) throws IndexOutOfBoundsException{
+    public static void addDeadline(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException{
         if (argument.isBlank()) {
             throw new IndexOutOfBoundsException();
         }
         String[] arguments = Command.parseArgument(argument, "/by", 0);
-        storeTask[Task.taskCount] = new Deadline(arguments[0], arguments[1]);
+        Task deadlineObject = new Deadline(arguments[0], arguments[1]);
         if (arguments[1].isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        Task.addTask(storeTask[Task.taskCount]);
+        Task.addTask(Tasks, deadlineObject);
     }
 
 }
