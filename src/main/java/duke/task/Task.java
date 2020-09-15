@@ -2,6 +2,7 @@ package duke.task;
 
 import duke.Duke;
 import duke.DukeException;
+import java.util.ArrayList;
 
 public class Task {
     protected String description;
@@ -30,31 +31,43 @@ public class Task {
         return output;
     }
 
-    public static void addTask(Task item) {
+    public static void addTask(ArrayList<Task> Tasks, Task item) {
+        Tasks.add(item);
         Task.taskCount++;
         Duke.printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
-
     }
 
-    public static void completeTask(Task[] storeTask,String argument) throws DukeException {
+    public static void completeTask(ArrayList<Task> Tasks,String argument) throws DukeException {
         int taskNumber = Integer.parseInt(argument) ;
         if ((taskNumber > taskCount) || (taskNumber <= 0)) {
             throw new DukeException("illegal number");
         }
-        Task taskItem = storeTask[taskNumber-1];
+        Task taskItem = Tasks.get(taskNumber-1);
         taskItem.isCompleted();
         Duke.printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
-    public static void showList(Task[] storeText) throws DukeException {
+    public static void showList(ArrayList<Task> Tasks) throws DukeException {
         if (taskCount == 0) {
             throw new DukeException("empty list");
         }
         String itemList = "";
         for (int item = 0 ; item < taskCount ; item++) {
-            itemList += Integer.toString(item+1) + ". "  +  storeText[item].printDescription() + "\n";
+            itemList += Integer.toString(item+1) + ". "  +  Tasks.get(item).printDescription() + "\n";
         }
         Duke.printBorder("Here are the tasks in your list:\n" + itemList);
+    }
+
+    public static void deleteTask(ArrayList<Task> Tasks, String argument) {
+        String removalNotice = "Noted. I've removed this task:\n";
+        //TODO throw number format exception && check for valid number
+        int taskNumber = Integer.parseInt(argument);
+        Task deletedObject = Tasks.get(taskNumber-1);
+        Tasks.remove(taskNumber-1);
+        taskCount--;
+        String remainingTask = "Now you have " + taskCount + " tasks in the list\n";
+        //TODO abstract print number of Tasks
+        Duke.printBorder(removalNotice + "  " + deletedObject.printDescription() +"\n" + remainingTask);
     }
 
 

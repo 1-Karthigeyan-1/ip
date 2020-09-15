@@ -7,8 +7,8 @@ import duke.task.Event;
 import duke.task.Task;
 import duke.task.Todo;
 
-import java.util.Arrays;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Command {
     public static final String LIST = "list";
@@ -17,10 +17,10 @@ public class Command {
     public static final String DEADLINE = "deadline";
     public static final String EVENT = "event";
     public static final String DONE = "done";
-    public static final int MAX_TASKS = 100;
+    public static final String DELETE = "delete";
 
     public static void filterInput() {
-        Task[] storeTask = new Task[MAX_TASKS];
+        ArrayList<Task> Tasks = new ArrayList<Task>();
         Scanner in = new Scanner(System.in);
         String command;
         while (true) {
@@ -29,19 +29,22 @@ public class Command {
             try {
                 switch (arguments[0].toLowerCase()) {
                 case LIST:
-                    Task.showList(Arrays.copyOf(storeTask, Task.taskCount));
+                    Task.showList(Tasks);
                     break;
                 case DONE:
-                    Task.completeTask(storeTask, arguments[1]);
+                    Task.completeTask(Tasks, arguments[1]);
                     break;
                 case TODO:
-                    Todo.addTodo(storeTask, arguments[1]);
+                    Todo.addTodo(Tasks, arguments[1]);
                     break;
                 case DEADLINE:
-                    Deadline.addDeadline(storeTask, arguments[1]);
+                    Deadline.addDeadline(Tasks, arguments[1]);
                     break;
                 case EVENT:
-                    Event.addEvent(storeTask, arguments[1]);
+                    Event.addEvent(Tasks, arguments[1]);
+                    break;
+                case DELETE:
+                    Task.deleteTask(Tasks, arguments[1]);
                     break;
                 case BYE:
                     return;

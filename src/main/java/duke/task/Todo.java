@@ -1,5 +1,7 @@
 package duke.task;
 
+import java.util.ArrayList;
+
 public class Todo extends Task{
     private static final String ICON = "[T]";
 
@@ -12,11 +14,11 @@ public class Todo extends Task{
         return ICON + super.printDescription();
     }
 
-    public static void addTodo(Task[] storeTask, String argument) throws IndexOutOfBoundsException {
+    public static void addTodo(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException {
         if (argument.isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        storeTask[Task.taskCount] = new Todo(argument);
-        Task.addTask(storeTask[Task.taskCount]);
+        Task todoObject = new Todo(argument);
+        Task.addTask(Tasks, todoObject);
     }
 }
