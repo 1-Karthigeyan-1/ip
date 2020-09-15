@@ -2,7 +2,7 @@ package duke.task;
 
 import duke.Duke;
 import duke.DukeException;
-import duke.Save;
+import duke.Storage;
 
 import java.util.ArrayList;
 import java.io.IOException;
@@ -39,7 +39,7 @@ public class Task {
 
     public static void addTask(ArrayList<Task> Tasks, Task item) {
         Tasks.add(item);
-        Save.appendFile(item);
+        Storage.appendFile(item);
         Task.taskCount++;
         Duke.printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
     }
@@ -52,7 +52,7 @@ public class Task {
         Task taskItem = Tasks.get(taskNumber-1);
         taskItem.isCompleted();
         try {
-            Save.writeFile(Tasks);
+            Storage.writeFile(Tasks);
         }catch(IOException e){
             System.out.println("Unable to save changes\n");
         }
@@ -78,7 +78,7 @@ public class Task {
         Tasks.remove(taskNumber - 1);
         taskCount--;
         try {
-            Save.writeFile(Tasks);
+            Storage.writeFile(Tasks);
         }catch(IOException e){
             System.out.println("Unable to save changes\n");
         }

@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Save {
+public class Storage {
     private static final String FILE_PATH = "data/storage.txt";
 
     public static File findFile() {

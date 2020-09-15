@@ -9,7 +9,7 @@ public class Duke {
     public static ArrayList<Task> Tasks = new ArrayList<Task>();
 
     public static void main(String[] args) {
-        Save.loadFile(Tasks);
+        Storage.loadFile(Tasks);
         printGreeting();
         Command.filterInput();
         printExit();
