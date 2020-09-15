@@ -1,7 +1,7 @@
 package duke.task;
 
 public class Todo extends Task{
-    private static final String ICON = "[T]";
+    private static final String taskType = "T";
 
     public Todo(String description) {
         super(description);
@@ -9,7 +9,12 @@ public class Todo extends Task{
 
     @Override
     public String printDescription() {
-        return ICON + super.printDescription();
+        return "["+ getTaskType() + "]" + super.printDescription();
+    }
+
+    @Override
+    public String getTaskType() {
+        return taskType;
     }
 
     public static void addTodo(Task[] storeTask, String argument) throws IndexOutOfBoundsException {
@@ -19,4 +24,5 @@ public class Todo extends Task{
         storeTask[Task.taskCount] = new Todo(argument);
         Task.addTask(storeTask[Task.taskCount]);
     }
+
 }

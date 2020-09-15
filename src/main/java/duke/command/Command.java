@@ -17,10 +17,8 @@ public class Command {
     public static final String DEADLINE = "deadline";
     public static final String EVENT = "event";
     public static final String DONE = "done";
-    public static final int MAX_TASKS = 100;
 
     public static void filterInput() {
-        Task[] storeTask = new Task[MAX_TASKS];
         Scanner in = new Scanner(System.in);
         String command;
         while (true) {
@@ -29,19 +27,19 @@ public class Command {
             try {
                 switch (arguments[0].toLowerCase()) {
                 case LIST:
-                    Task.showList(Arrays.copyOf(storeTask, Task.taskCount));
+                    Task.showList(Arrays.copyOf(Duke.storeTask, Task.taskCount));
                     break;
                 case DONE:
-                    Task.completeTask(storeTask, arguments[1]);
+                    Task.completeTask(Duke.storeTask, arguments[1]);
                     break;
                 case TODO:
-                    Todo.addTodo(storeTask, arguments[1]);
+                    Todo.addTodo(Duke.storeTask, arguments[1]);
                     break;
                 case DEADLINE:
-                    Deadline.addDeadline(storeTask, arguments[1]);
+                    Deadline.addDeadline(Duke.storeTask, arguments[1]);
                     break;
                 case EVENT:
-                    Event.addEvent(storeTask, arguments[1]);
+                    Event.addEvent(Duke.storeTask, arguments[1]);
                     break;
                 case BYE:
                     return;
@@ -55,7 +53,7 @@ public class Command {
             } catch (NumberFormatException e) {
                 Duke.printBorder("Please input a number for " + arguments[0] + "\n");
             } catch (DukeException e) {
-
+                //TODO do sth abt this
             }
         }
     }

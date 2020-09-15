@@ -1,10 +1,14 @@
 package duke;
 
 import duke.command.Command;
+import duke.task.Task;
 
 public class Duke {
+    public static final int MAX_TASKS = 100;
+    public static Task[] storeTask = new Task[MAX_TASKS];
 
     public static void main(String[] args) {
+        Save.loadFile(storeTask);
         printGreeting();
         Command.filterInput();
         printExit();

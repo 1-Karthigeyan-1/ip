@@ -4,7 +4,7 @@ import duke.command.Command;
 
 public class Event extends Task {
     protected String date;
-    private static final String ICON = "[E]";
+    private static final String taskType = "E";
 
     public Event(String description, String date) throws IndexOutOfBoundsException {
         super(description);
@@ -16,8 +16,18 @@ public class Event extends Task {
 
     @Override
     public String printDescription() {
-        return ICON + super.printDescription() + " (at:" + date + ")";
+        return "["+ getTaskType() + "]" + super.printDescription() + " (at:" + date + ")";
     }
+
+    @Override
+    public String getTaskType() {
+        return taskType;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
 
     public static void addEvent(Task[] storeTask, String argument) throws IndexOutOfBoundsException{
         if (argument.isBlank()) {
