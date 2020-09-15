@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Deadline extends Task {
     protected String by;
-    private static final String ICON = "[D]";
+    private static final String taskType = "D";
 
     public Deadline(String description, String by) throws IndexOutOfBoundsException {
         super(description);
@@ -16,8 +16,13 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String getTaskType() {
+        return taskType;
+    }
+
+    @Override
     public String printDescription() {
-        return ICON + super.printDescription() + " (by:" + by + ")";
+        return "["+ getTaskType() + "]" + super.printDescription() + " (by:" + by + ")";
     }
 
     public static void addDeadline(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException{
@@ -30,6 +35,10 @@ public class Deadline extends Task {
             throw new IndexOutOfBoundsException();
         }
         Task.addTask(Tasks, deadlineObject);
+    }
+
+    public String getBy(){
+        return by;
     }
 
 }

@@ -20,7 +20,6 @@ public class Command {
     public static final String DELETE = "delete";
 
     public static void filterInput() {
-        ArrayList<Task> Tasks = new ArrayList<Task>();
         Scanner in = new Scanner(System.in);
         String command;
         while (true) {
@@ -29,22 +28,22 @@ public class Command {
             try {
                 switch (arguments[0].toLowerCase()) {
                 case LIST:
-                    Task.showList(Tasks);
+                    Task.showList(Duke.Tasks);
                     break;
                 case DONE:
-                    Task.completeTask(Tasks, arguments[1]);
+                    Task.completeTask(Duke.Tasks, arguments[1]);
                     break;
                 case TODO:
-                    Todo.addTodo(Tasks, arguments[1]);
+                    Todo.addTodo(Duke.Tasks, arguments[1]);
                     break;
                 case DEADLINE:
-                    Deadline.addDeadline(Tasks, arguments[1]);
+                    Deadline.addDeadline(Duke.Tasks, arguments[1]);
                     break;
                 case EVENT:
-                    Event.addEvent(Tasks, arguments[1]);
+                    Event.addEvent(Duke.Tasks, arguments[1]);
                     break;
                 case DELETE:
-                    Task.deleteTask(Tasks, arguments[1]);
+                    Task.deleteTask(Duke.Tasks, arguments[1]);
                     break;
                 case BYE:
                     return;
@@ -58,7 +57,7 @@ public class Command {
             } catch (NumberFormatException e) {
                 Duke.printBorder("Please input a number for " + arguments[0] + "\n");
             } catch (DukeException e) {
-
+                //TODO do sth abt this
             }
         }
     }

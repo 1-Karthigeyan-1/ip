@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Event extends Task {
     protected String date;
-    private static final String ICON = "[E]";
+    private static final String taskType = "E";
 
     public Event(String description, String date) throws IndexOutOfBoundsException {
         super(description);
@@ -17,7 +17,16 @@ public class Event extends Task {
 
     @Override
     public String printDescription() {
-        return ICON + super.printDescription() + " (at:" + date + ")";
+        return "["+ getTaskType() + "]" + super.printDescription() + " (at:" + date + ")";
+    }
+
+    @Override
+    public String getTaskType() {
+        return taskType;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public static void addEvent(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException{

@@ -3,7 +3,7 @@ package duke.task;
 import java.util.ArrayList;
 
 public class Todo extends Task{
-    private static final String ICON = "[T]";
+    private static final String taskType = "T";
 
     public Todo(String description) {
         super(description);
@@ -11,7 +11,12 @@ public class Todo extends Task{
 
     @Override
     public String printDescription() {
-        return ICON + super.printDescription();
+        return "["+ getTaskType() + "]" + super.printDescription();
+    }
+
+    @Override
+    public String getTaskType() {
+        return taskType;
     }
 
     public static void addTodo(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException {
@@ -21,4 +26,5 @@ public class Todo extends Task{
         Task todoObject = new Todo(argument);
         Task.addTask(Tasks, todoObject);
     }
+
 }

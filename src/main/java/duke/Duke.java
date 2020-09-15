@@ -1,10 +1,15 @@
 package duke;
 
 import duke.command.Command;
+import duke.task.Task;
+
+import java.util.ArrayList;
 
 public class Duke {
+    public static ArrayList<Task> Tasks = new ArrayList<Task>();
 
     public static void main(String[] args) {
+        Save.loadFile(Tasks);
         printGreeting();
         Command.filterInput();
         printExit();
