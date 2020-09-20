@@ -25,6 +25,10 @@ public class Deadline extends Task {
         return "["+ getTaskType() + "]" + super.printDescription() + " (by:" + by + ")";
     }
 
+    public String getBy(){
+        return by;
+    }
+
     public static void addDeadline(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException{
         if (argument.isBlank()) {
             throw new IndexOutOfBoundsException();
@@ -37,8 +41,5 @@ public class Deadline extends Task {
         Task.addTask(Tasks, deadlineObject);
     }
 
-    public String getBy(){
-        return by;
-    }
 
 }

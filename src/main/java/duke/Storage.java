@@ -60,24 +60,23 @@ public class Storage {
             Data = storageData.nextLine();
             String[] arguments = Command.parseArgument(Data, " , ", 0);
             switch(arguments[0]) {
-                case "T":
-                    Tasks.add(new Todo(arguments[2]));
-                    break;
-                case "E":
-                    Tasks.add(new Event(arguments[2], arguments[3]));
-                    break;
-                case "D":
-                    Tasks.add(new Deadline(arguments[2], arguments[3]));
-                    break;
-                default:
-                    System.out.println("Unable to load this set of data...Data corrupted");
-                    break;
+            case "T":
+                Tasks.add(new Todo(arguments[2]));
+                break;
+            case "E":
+                Tasks.add(new Event(arguments[2], arguments[3]));
+                break;
+            case "D":
+                Tasks.add(new Deadline(arguments[2], arguments[3]));
+                break;
+            default:
+                System.out.println("Unable to load this set of data...Data corrupted");
+                break;
             }
             if(arguments[1].equals("\u2713") ) {
                 Tasks.get(i).isCompleted();
             }
             i++;
-            Task.taskCount++;
         }
         Duke.printBorder("Finished loading.\n");
     }
@@ -98,27 +97,26 @@ public class Storage {
 
     public static void filterTask(Task item, String description, String taskType, String done, FileWriter appendWrite) throws IOException {
         switch (taskType) {
-            case "T":
-                appendWrite.write(String.format("%s , %s , %s\n", taskType, done, description));
-                break;
-            case "E":
-                String date = ((Event) item).getDate();
-                appendWrite.write(String.format("%s , %s , %s , %s\n", taskType, done, description, date));
-                break;
-            case "D":
-                String by = ((Deadline) item).getBy();
-                appendWrite.write(String.format("%s , %s , %s , %s\n", taskType, done, description, by));
-                break;
-            default:
-                System.out.println("Save Error!");
-                break;
+        case "T":
+            appendWrite.write(String.format("%s , %s , %s\n", taskType, done, description));
+            break;
+        case "E":
+            String date = ((Event) item).getDate();
+            appendWrite.write(String.format("%s , %s , %s , %s\n", taskType, done, description, date));
+            break;
+        case "D":
+            String by = ((Deadline) item).getBy();
+            appendWrite.write(String.format("%s , %s , %s , %s\n", taskType, done, description, by));
+            break;
+        default:
+            System.out.println("Save Error!");
+            break;
         }
     }
 
     public static void writeFile(ArrayList<Task> Tasks) throws IOException {
         FileWriter overWrite = new FileWriter(FILE_PATH, false);
-        for(int i = 0; i < Task.taskCount; i++) {
-            Task item = Tasks.get(i);
+        for(Task item : Tasks) {
             String description = item.getDescription();
             String taskType = item.getTaskType();
             String done = item.getStatusIcon();

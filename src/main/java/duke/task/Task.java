@@ -11,7 +11,6 @@ import java.io.IOException;
 public class Task {
     protected String description;
     protected boolean isDone;
-    public static int taskCount = 0;
     private static final String taskType = "Dummy";
 
 
@@ -40,13 +39,12 @@ public class Task {
     public static void addTask(ArrayList<Task> Tasks, Task item) {
         Tasks.add(item);
         Storage.appendFile(item);
-        Task.taskCount++;
         Duke.printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
     }
 
     public static void completeTask(ArrayList<Task> Tasks,String argument) throws DukeException {
         int taskNumber = Integer.parseInt(argument) ;
-        if ((taskNumber > taskCount) || (taskNumber <= 0)) {
+        if ((taskNumber > Tasks.size()) || (taskNumber <= 0)) {
             throw new DukeException("illegal number");
         }
         Task taskItem = Tasks.get(taskNumber-1);
@@ -60,11 +58,11 @@ public class Task {
     }
 
     public static void showList(ArrayList<Task> Tasks) throws DukeException {
-        if (taskCount == 0) {
+        if (Tasks.size() == 0) {
             throw new DukeException("empty list");
         }
         String itemList = "";
-        for (int item = 0 ; item < taskCount ; item++) {
+        for (int item = 0 ; item < Tasks.size() ; item++) {
             itemList += Integer.toString(item+1) + ". "  +  Tasks.get(item).printDescription() + "\n";
         }
         Duke.printBorder("Here are the tasks in your list:\n" + itemList);
@@ -76,13 +74,12 @@ public class Task {
         int taskNumber = Integer.parseInt(argument);
         Task deletedObject = Tasks.get(taskNumber - 1);
         Tasks.remove(taskNumber - 1);
-        taskCount--;
         try {
             Storage.writeFile(Tasks);
         }catch(IOException e){
             System.out.println("Unable to save changes\n");
         }
-        String remainingTask = "Now you have " + taskCount + " tasks in the list\n";
+        String remainingTask = "Now you have " + Tasks.size() + " tasks in the list\n";
         //TODO abstract print number of Tasks
         Duke.printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
     }
