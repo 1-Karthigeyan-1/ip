@@ -3,7 +3,7 @@ package duke.command;
 import duke.DukeException;
 import duke.task.TaskList;
 
-public class ListCommand extends Command{
+public class ListCommand extends CommandArgument{
     public static final String CommandWord = "list";
 
     public ListCommand(String description) {
@@ -19,4 +19,5 @@ public class ListCommand extends Command{
             //TODO
         }
     }
+
 }

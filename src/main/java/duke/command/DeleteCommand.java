@@ -2,7 +2,7 @@ package duke.command;
 
 import duke.task.TaskList;
 
-public class DeleteCommand extends Command{
+public class DeleteCommand extends CommandArgument{
     public static final String CommandWord = "delete";
 
     public DeleteCommand(String description) {
@@ -13,4 +13,6 @@ public class DeleteCommand extends Command{
     public void execute(String description) {
         TaskList.deleteTask(TaskList.Tasks, description);
     }
+
+
 }

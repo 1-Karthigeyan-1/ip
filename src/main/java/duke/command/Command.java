@@ -1,9 +1,10 @@
 package duke.command;
 
 public abstract class Command {
-
-    public Command(String description) {
-        execute(description);
+    public Command() {
+        execute();
     }
-    public abstract void execute(String description);
+
+    public abstract void execute();
+
 }

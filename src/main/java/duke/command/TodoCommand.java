@@ -3,9 +3,8 @@ package duke.command;
 import duke.task.TaskList;
 import duke.task.Todo;
 
-public class TodoCommand extends Command{
+public class TodoCommand extends CommandArgument{
     public static final String CommandWord = "todo";
-
     public TodoCommand(String description) {
         super(description);
     }
@@ -14,4 +13,5 @@ public class TodoCommand extends Command{
     public void execute(String description) {
         Todo.addTodo(TaskList.Tasks, description);
     }
+
 }
