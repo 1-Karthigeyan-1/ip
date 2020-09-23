@@ -10,6 +10,5 @@ public abstract class CommandArgument extends Command{
 
     @Override
     public void execute(){
-
     }
 }

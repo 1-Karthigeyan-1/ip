@@ -14,7 +14,7 @@ public class DoneCommand extends CommandArgument{
     @Override
     public void execute(String description) {
         try {
-            Task.completeTask(TaskList.Tasks, description);
+            Task.completeTask(description);
         } catch (DukeException e) {
             //TODO sth abt this
         }

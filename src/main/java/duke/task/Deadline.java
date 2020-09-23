@@ -1,5 +1,6 @@
 package duke.task;
 
+import duke.Duke;
 import duke.command.Parser;
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class Deadline extends Task {
         return by;
     }
 
-    public static void addDeadline(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException{
+    public static void addDeadline(String argument) throws IndexOutOfBoundsException{
         if (argument.isBlank()) {
             throw new IndexOutOfBoundsException();
         }
@@ -38,7 +39,7 @@ public class Deadline extends Task {
         if (arguments[1].isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        TaskList.addTask(Tasks, deadlineObject);
+        Duke.getTaskList().addTask(deadlineObject, false);
     }
 
 

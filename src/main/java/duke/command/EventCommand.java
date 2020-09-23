@@ -12,7 +12,7 @@ public class EventCommand extends CommandArgument{
 
     @Override
     public void execute(String description) {
-        Event.addEvent(TaskList.Tasks, description);
+        Event.addEvent(description);
     }
 
 }

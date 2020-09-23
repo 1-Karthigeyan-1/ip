@@ -1,5 +1,7 @@
 package duke.task;
 
+import duke.Duke;
+
 import java.util.ArrayList;
 
 public class Todo extends Task{
@@ -19,12 +21,12 @@ public class Todo extends Task{
         return taskType;
     }
 
-    public static void addTodo(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException {
+    public static void addTodo(String argument) throws IndexOutOfBoundsException {
         if (argument.isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        Task todoObject = new Todo(argument);
-        TaskList.addTask(Tasks, todoObject);
+        Task item = new Todo(argument);
+        Duke.getTaskList().addTask(item, false);
     }
 
 }

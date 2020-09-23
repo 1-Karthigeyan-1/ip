@@ -2,18 +2,13 @@ package duke.task;
 
 import duke.Duke;
 import duke.DukeException;
-import duke.Storage;
-import duke.Ui;
 
-import java.util.ArrayList;
 import java.io.IOException;
 
 
 public abstract class Task {
     protected String description;
     protected boolean isDone;
-    private static final String taskType = "Dummy";
-
 
     public Task(String description) {
         this.description = description;
@@ -37,24 +32,23 @@ public abstract class Task {
         return output;
     }
 
-    public static void completeTask(ArrayList<Task> Tasks,String argument) throws DukeException {
+    public static void completeTask(String argument) throws DukeException {
+        TaskList Tasks = Duke.getTaskList();
         int taskNumber = Integer.parseInt(argument) ;
-        if ((taskNumber > Tasks.size()) || (taskNumber <= 0)) {
+        if ((taskNumber > Tasks.getSize()) || (taskNumber <= 0)) {
             throw new DukeException("illegal number");
         }
-        Task taskItem = Tasks.get(taskNumber-1);
+        Task taskItem = Tasks.getTask(taskNumber-1);
         taskItem.completeTask();
         try {
-            Duke.getStorage().writeFile(Tasks);
+            Duke.getStorage().writeFile();
         }catch(IOException e){
             System.out.println("Unable to save changes\n");
         }
         Duke.getUi().printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
-    public String getTaskType() {
-        return taskType;
-    }
+    public abstract String getTaskType();
 
 
 }

@@ -2,42 +2,45 @@ package duke.task;
 
 import duke.Duke;
 import duke.DukeException;
-import duke.Storage;
-import duke.Ui;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class TaskList {
-    public static ArrayList<Task> Tasks = new ArrayList<Task>();
+    private ArrayList<Task> Tasks;
 
-    public TaskList(){};
+    public TaskList(){
+        Tasks = new ArrayList<Task>();
+    };
 
-    public static void showList(ArrayList<Task> Tasks) throws DukeException {
+    public void showList() throws DukeException {
         if (Tasks.size() == 0) {
             throw new DukeException("empty list");
         }
         String itemList = "";
-        for (int item = 0 ; item < Tasks.size() ; item++) {
+        for (int item = 0 ; item < this.getSize() ; item++) {
             itemList += (item + 1) + ". "  +  Tasks.get(item).printDescription() + "\n";
         }
         Duke.getUi().printBorder("Here are the tasks in your list:\n" + itemList);
     }
 
-    public static void addTask(ArrayList<Task> Tasks, Task item) {
+    public void addTask(Task item, boolean isReadOnly) {
         Tasks.add(item);
-        Duke.getStorage().appendFile(item);
-        Duke.getUi().printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
+        if(!isReadOnly) {
+            Duke.getStorage().appendFile(item);
+            Duke.getUi().printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
+        }
     }
 
-    public static void deleteTask(ArrayList<Task> Tasks, String argument) {
+    public void deleteTask(String argument) {
         String removalNotice = "Noted. I've removed this task:\n";
         //TODO throw number format exception && check for valid number
         int taskNumber = Integer.parseInt(argument);
         Task deletedObject = Tasks.get(taskNumber - 1);
         Tasks.remove(taskNumber - 1);
         try {
-            Duke.getStorage().writeFile(Tasks);
+            Duke.getStorage().writeFile();
         }catch(IOException e){
             System.out.println("Unable to save changes\n");
         }
@@ -45,4 +48,13 @@ public class TaskList {
         //TODO abstract print number of Tasks
         Duke.getUi().printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
     }
+
+    public Task getTask(int index){
+        return Tasks.get(index);
+    }
+
+    public int getSize(){
+        return Tasks.size();
+    }
+
 }

@@ -1,9 +1,6 @@
 package duke;
 
-import duke.task.Task;
-import duke.task.Todo;
-import duke.task.Event;
-import duke.task.Deadline;
+import duke.task.*;
 import duke.command.Parser;
 
 import java.io.File;
@@ -40,20 +37,19 @@ public class Storage {
                 storage.getParentFile().mkdirs();
             }
             storage.createNewFile();
-        }catch (java.io.IOException e) {
+        } catch (java.io.IOException e) {
             Duke.getUi().printBorder("Unable to create file...Cri\n");
         }
         Duke.getUi().printBorder("File created in " + storage.getAbsolutePath() + "\n");
         return storage;
     }
 
-    public void loadFile(ArrayList<Task> Tasks) {
+    public void loadFile() {
         File storage = findFile();
         Scanner storageData;
         try {
             storageData = new Scanner(storage);
-        }
-        catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Duke.getUi().printBorder("Error has occurred! File not found!\n");
             return;
         }
@@ -63,22 +59,23 @@ public class Storage {
         while (storageData.hasNext()) {
             Data = storageData.nextLine();
             String[] arguments = Parser.parseArgument(Data, " , ", 0);
-            switch(arguments[0]) {
+            TaskList Tasks = Duke.getTaskList();
+            switch (arguments[0]) {
             case "T":
-                Tasks.add(new Todo(arguments[2]));
+                Tasks.addTask(new Todo(arguments[2]), true);
                 break;
             case "E":
-                Tasks.add(new Event(arguments[2], arguments[3]));
+                Tasks.addTask(new Event(arguments[2], arguments[3]), true);
                 break;
             case "D":
-                Tasks.add(new Deadline(arguments[2], arguments[3]));
+                Tasks.addTask(new Deadline(arguments[2], arguments[3]), true);
                 break;
             default:
                 System.out.println("Unable to load this set of data...Data corrupted");
                 break;
             }
-            if(arguments[1].equals("\u2713") ) {
-                Tasks.get(i).completeTask();
+            if (arguments[1].equals("\u2713")) {
+                Tasks.getTask(i).completeTask();
             }
             i++;
         }
@@ -89,13 +86,13 @@ public class Storage {
         String description = item.getDescription();
         String taskType = item.getTaskType();
         String done = item.getStatusIcon();
-        try{
+        try {
             FileWriter appendWrite = new FileWriter(filePath, true);
             filterTask(item, description, taskType, done, appendWrite);
             appendWrite.close();
-            } catch(java.io.IOException e) {
+        } catch (java.io.IOException e) {
             System.out.println("Oh no! IOException has occurred!");
-            }
+        }
         System.out.println("Save complete");
     }
 
@@ -118,9 +115,10 @@ public class Storage {
         }
     }
 
-    public void writeFile(ArrayList<Task> Tasks) throws IOException {
+    public void writeFile() throws IOException {
         FileWriter overWrite = new FileWriter(filePath, false);
-        for(Task item : Tasks) {
+        for (int i = 0; i < Duke.getTaskList().getSize(); i++){
+            Task item = Duke.getTaskList().getTask(i);
             String description = item.getDescription();
             String taskType = item.getTaskType();
             String done = item.getStatusIcon();

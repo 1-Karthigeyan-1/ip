@@ -1,5 +1,6 @@
 package duke.task;
 
+import duke.Duke;
 import duke.command.Parser;
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class Event extends Task {
         return date;
     }
 
-    public static void addEvent(ArrayList<Task> Tasks, String argument) throws IndexOutOfBoundsException{
+    public static void addEvent(String argument) throws IndexOutOfBoundsException{
         if (argument.isBlank()) {
             throw new IndexOutOfBoundsException();
         }
@@ -38,6 +39,6 @@ public class Event extends Task {
         if (arguments[1].isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        TaskList.addTask(Tasks, eventObject);
+        Duke.getTaskList().addTask(eventObject, false);
     }
 }

@@ -1,5 +1,6 @@
 package duke.command;
 
+import duke.Duke;
 import duke.task.TaskList;
 
 public class DeleteCommand extends CommandArgument{
@@ -11,7 +12,7 @@ public class DeleteCommand extends CommandArgument{
 
     @Override
     public void execute(String description) {
-        TaskList.deleteTask(TaskList.Tasks, description);
+        Duke.getTaskList().deleteTask(description);
     }
 
 

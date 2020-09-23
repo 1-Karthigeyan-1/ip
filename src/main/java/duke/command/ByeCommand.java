@@ -9,6 +9,6 @@ public class ByeCommand extends Command{
 
     @Override
     public void execute() {
-
     }
+
 }

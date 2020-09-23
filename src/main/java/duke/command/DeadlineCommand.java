@@ -12,7 +12,7 @@ public class DeadlineCommand extends CommandArgument{
 
     @Override
     public void execute(String description) {
-        Deadline.addDeadline(TaskList.Tasks, description);
+        Deadline.addDeadline(description);
     }
 
 }

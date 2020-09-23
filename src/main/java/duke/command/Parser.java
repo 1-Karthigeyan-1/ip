@@ -11,14 +11,13 @@ public class Parser {
 
     public void filterInput() {
         Scanner in = new Scanner(System.in);
-        String command;
-        while (true) {
-            command = in.nextLine();
-            String[] arguments = parseArgument(command, " ", 2);
-            try {
+        boolean isExit = false;
+        while (!isExit) {
+            String userInput = in.nextLine();
+            String[] arguments = parseArgument(userInput, " ", 2);
                 switch (arguments[0].toLowerCase()) {
                 case ListCommand.CommandWord:
-                    new ListCommand(arguments[1]);
+                    new ListCommand();
                     break;
                 case DoneCommand.CommandWord:
                     new DoneCommand(arguments[1]);
@@ -42,11 +41,6 @@ public class Parser {
                     printInvalidCommand();
                     break;
                 }
-            } catch (IndexOutOfBoundsException e) {
-                Duke.getUi().printBorder("The description of " + arguments[0] + " cannot be empty\n");
-            } catch (NumberFormatException e) {
-                Duke.getUi().printBorder("Please input a number for " + arguments[0] + "\n");
-            }
         }
     }
 
