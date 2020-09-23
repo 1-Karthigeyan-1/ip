@@ -14,6 +14,7 @@ public class TaskList {
         Tasks = new ArrayList<Task>();
     };
 
+
     public void showList() throws DukeException {
         if (Tasks.size() == 0) {
             throw new DukeException("empty list");
@@ -28,7 +29,7 @@ public class TaskList {
     public void addTask(Task item, boolean isReadOnly) {
         Tasks.add(item);
         if(!isReadOnly) {
-            Duke.getStorage().appendFile(item);
+            Duke.getStorage().saveData(item);
             Duke.getUi().printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
         }
     }
