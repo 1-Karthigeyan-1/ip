@@ -1,5 +1,7 @@
 package duke;
 
+import java.util.Scanner;
+
 public class Ui {
 
     public void printBorder(String displayText) {
@@ -15,5 +17,15 @@ public class Ui {
     public void printExit() {
         String exit = "Bye. Hope to see you again soon!\n";
         printBorder(exit);
+    }
+
+    public void printInvalidCommand() {
+        printBorder("Invalid command. Please try again.\n");
+    }
+
+    public String readCommand(){
+        Scanner in = new Scanner(System.in);
+        String userInput = in.nextLine();
+        return userInput;
     }
 }

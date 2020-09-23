@@ -6,15 +6,14 @@ import duke.task.TaskList;
 public class Duke {
 
     private static Storage storage;
-    private static Parser parse;
     private static Ui ui;
     private static TaskList tasks;
 
     public Duke(String filePath) {
         storage = new Storage(filePath);
-        parse = new Parser();
         ui = new Ui();
         tasks = new TaskList();
+        storage.loadFile();
     }
 
     public static void main(String[] args) {
@@ -22,10 +21,11 @@ public class Duke {
     }
 
     public void run() {
-        storage.loadFile();
         ui.printGreeting();
-        parse.filterInput();
-        ui.printExit();
+        while(true) {
+            String userInput = Duke.getUi().readCommand();
+            Parser.filterInput(userInput);
+        }
     }
 
     public static Storage getStorage(){
