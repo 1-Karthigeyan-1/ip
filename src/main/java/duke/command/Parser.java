@@ -8,13 +8,6 @@ import duke.task.*;
 import java.util.Scanner;
 
 public class Parser {
-    public static final String LIST = "list";
-    public static final String BYE = "bye";
-    public static final String TODO = "todo";
-    public static final String DEADLINE = "deadline";
-    public static final String EVENT = "event";
-    public static final String DONE = "done";
-    public static final String DELETE = "delete";
 
     public void filterInput() {
         Scanner in = new Scanner(System.in);
@@ -24,25 +17,25 @@ public class Parser {
             String[] arguments = parseArgument(command, " ", 2);
             try {
                 switch (arguments[0].toLowerCase()) {
-                case LIST:
-                    TaskList.showList(TaskList.Tasks);
+                case ListCommand.CommandWord:
+                    new ListCommand(arguments[1]);
                     break;
-                case DONE:
-                    Task.completeTask(TaskList.Tasks, arguments[1]);
+                case DoneCommand.CommandWord:
+                    new DoneCommand(arguments[1]);
                     break;
-                case TODO:
-                    Todo.addTodo(TaskList.Tasks, arguments[1]);
+                case TodoCommand.CommandWord:
+                    new TodoCommand(arguments[1]);
                     break;
-                case DEADLINE:
-                    Deadline.addDeadline(TaskList.Tasks, arguments[1]);
+                case DeadlineCommand.CommandWord:
+                    new DeadlineCommand(arguments[1]);
                     break;
-                case EVENT:
-                    Event.addEvent(TaskList.Tasks, arguments[1]);
+                case EventCommand.CommandWord:
+                    new EventCommand(arguments[1]);
                     break;
-                case DELETE:
-                    TaskList.deleteTask(TaskList.Tasks, arguments[1]);
+                case DeleteCommand.CommandWord:
+                    new DeleteCommand(arguments[1]);
                     break;
-                case BYE:
+                case ByeCommand.CommandWord:
                     return;
                     //fall through
                 default:
@@ -53,8 +46,6 @@ public class Parser {
                 Duke.getUi().printBorder("The description of " + arguments[0] + " cannot be empty\n");
             } catch (NumberFormatException e) {
                 Duke.getUi().printBorder("Please input a number for " + arguments[0] + "\n");
-            } catch (DukeException e) {
-                //TODO do sth abt this
             }
         }
     }

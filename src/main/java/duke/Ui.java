@@ -1,6 +1,7 @@
 package duke;
 
 public class Ui {
+
     public void printBorder(String displayText) {
         String line = "____________________________________________________________\n";
         System.out.print(line + displayText + line);
