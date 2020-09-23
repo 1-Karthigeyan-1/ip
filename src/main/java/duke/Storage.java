@@ -14,43 +14,47 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
-    private static final String FILE_PATH = "data/storage.txt";
+    private String filePath;
 
-    public static File findFile() {
-        File storage = new File(FILE_PATH);
+    public Storage(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public File findFile() {
+        File storage = new File(filePath);
 
         if (!storage.exists()) {
-            Ui.printBorder("File does not exist, Attempting to create one....\n");
+            Duke.getUi().printBorder("File does not exist, Attempting to create one....\n");
             storage = createFile();
 
         }
-        Ui.printBorder("File found! Accessing Data...\n");
+        Duke.getUi().printBorder("File found! Accessing Data...\n");
         return storage;
 
     }
 
-    public static File createFile() {
-        File storage = new File(FILE_PATH);
+    public File createFile() {
+        File storage = new File(filePath);
         try {
             if (!storage.getParentFile().exists()) {
                 storage.getParentFile().mkdirs();
             }
             storage.createNewFile();
         }catch (java.io.IOException e) {
-            Ui.printBorder("Unable to create file...Cri\n");
+            Duke.getUi().printBorder("Unable to create file...Cri\n");
         }
-        Ui.printBorder("File created in " + storage.getAbsolutePath() + "\n");
+        Duke.getUi().printBorder("File created in " + storage.getAbsolutePath() + "\n");
         return storage;
     }
 
-    public static void loadFile(ArrayList<Task> Tasks) {
+    public void loadFile(ArrayList<Task> Tasks) {
         File storage = findFile();
         Scanner storageData;
         try {
             storageData = new Scanner(storage);
         }
         catch(FileNotFoundException e) {
-            Ui.printBorder("Error has occurred! File not found!\n");
+            Duke.getUi().printBorder("Error has occurred! File not found!\n");
             return;
         }
         String Data;
@@ -78,15 +82,15 @@ public class Storage {
             }
             i++;
         }
-        Ui.printBorder("Finished loading.\n");
+        Duke.getUi().printBorder("Finished loading.\n");
     }
 
-    public static void appendFile(Task item) {
+    public void appendFile(Task item) {
         String description = item.getDescription();
         String taskType = item.getTaskType();
         String done = item.getStatusIcon();
         try{
-            FileWriter appendWrite = new FileWriter(FILE_PATH, true);
+            FileWriter appendWrite = new FileWriter(filePath, true);
             filterTask(item, description, taskType, done, appendWrite);
             appendWrite.close();
             } catch(java.io.IOException e) {
@@ -95,7 +99,7 @@ public class Storage {
         System.out.println("Save complete");
     }
 
-    public static void filterTask(Task item, String description, String taskType, String done, FileWriter appendWrite) throws IOException {
+    public void filterTask(Task item, String description, String taskType, String done, FileWriter appendWrite) throws IOException {
         switch (taskType) {
         case "T":
             appendWrite.write(String.format("%s , %s , %s\n", taskType, done, description));
@@ -114,8 +118,8 @@ public class Storage {
         }
     }
 
-    public static void writeFile(ArrayList<Task> Tasks) throws IOException {
-        FileWriter overWrite = new FileWriter(FILE_PATH, false);
+    public void writeFile(ArrayList<Task> Tasks) throws IOException {
+        FileWriter overWrite = new FileWriter(filePath, false);
         for(Task item : Tasks) {
             String description = item.getDescription();
             String taskType = item.getTaskType();

@@ -1,5 +1,6 @@
 package duke.task;
 
+import duke.Duke;
 import duke.DukeException;
 import duke.Storage;
 import duke.Ui;
@@ -20,13 +21,13 @@ public class TaskList {
         for (int item = 0 ; item < Tasks.size() ; item++) {
             itemList += (item + 1) + ". "  +  Tasks.get(item).printDescription() + "\n";
         }
-        Ui.printBorder("Here are the tasks in your list:\n" + itemList);
+        Duke.getUi().printBorder("Here are the tasks in your list:\n" + itemList);
     }
 
     public static void addTask(ArrayList<Task> Tasks, Task item) {
         Tasks.add(item);
-        Storage.appendFile(item);
-        Ui.printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
+        Duke.getStorage().appendFile(item);
+        Duke.getUi().printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
     }
 
     public static void deleteTask(ArrayList<Task> Tasks, String argument) {
@@ -36,12 +37,12 @@ public class TaskList {
         Task deletedObject = Tasks.get(taskNumber - 1);
         Tasks.remove(taskNumber - 1);
         try {
-            Storage.writeFile(Tasks);
+            Duke.getStorage().writeFile(Tasks);
         }catch(IOException e){
             System.out.println("Unable to save changes\n");
         }
         String remainingTask = "Now you have " + Tasks.size() + " tasks in the list\n";
         //TODO abstract print number of Tasks
-        Ui.printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
+        Duke.getUi().printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
     }
 }

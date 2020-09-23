@@ -1,5 +1,6 @@
 package duke.command;
 
+import duke.Duke;
 import duke.DukeException;
 import duke.Ui;
 import duke.task.*;
@@ -15,7 +16,7 @@ public class Parser {
     public static final String DONE = "done";
     public static final String DELETE = "delete";
 
-    public static void filterInput() {
+    public void filterInput() {
         Scanner in = new Scanner(System.in);
         String command;
         while (true) {
@@ -49,9 +50,9 @@ public class Parser {
                     break;
                 }
             } catch (IndexOutOfBoundsException e) {
-                Ui.printBorder("The description of " + arguments[0] + " cannot be empty\n");
+                Duke.getUi().printBorder("The description of " + arguments[0] + " cannot be empty\n");
             } catch (NumberFormatException e) {
-                Ui.printBorder("Please input a number for " + arguments[0] + "\n");
+                Duke.getUi().printBorder("Please input a number for " + arguments[0] + "\n");
             } catch (DukeException e) {
                 //TODO do sth abt this
             }
@@ -64,7 +65,7 @@ public class Parser {
     }
 
     public static void printInvalidCommand() {
-        Ui.printBorder("Invalid command. Please try again.\n");
+        Duke.getUi().printBorder("Invalid command. Please try again.\n");
     }
 
 }

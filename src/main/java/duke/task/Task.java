@@ -1,5 +1,6 @@
 package duke.task;
 
+import duke.Duke;
 import duke.DukeException;
 import duke.Storage;
 import duke.Ui;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.io.IOException;
 
 
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
     private static final String taskType = "Dummy";
@@ -44,11 +45,11 @@ public class Task {
         Task taskItem = Tasks.get(taskNumber-1);
         taskItem.completeTask();
         try {
-            Storage.writeFile(Tasks);
+            Duke.getStorage().writeFile(Tasks);
         }catch(IOException e){
             System.out.println("Unable to save changes\n");
         }
-        Ui.printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
+        Duke.getUi().printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
     public String getTaskType() {
