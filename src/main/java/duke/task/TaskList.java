@@ -1,13 +1,15 @@
 package duke.task;
 
-import duke.Duke;
 import duke.DukeException;
 import duke.Storage;
+import duke.Ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class TaskList {
+    public static ArrayList<Task> Tasks = new ArrayList<Task>();
+
     public TaskList(){};
 
     public static void showList(ArrayList<Task> Tasks) throws DukeException {
@@ -18,13 +20,13 @@ public class TaskList {
         for (int item = 0 ; item < Tasks.size() ; item++) {
             itemList += (item + 1) + ". "  +  Tasks.get(item).printDescription() + "\n";
         }
-        Duke.printBorder("Here are the tasks in your list:\n" + itemList);
+        Ui.printBorder("Here are the tasks in your list:\n" + itemList);
     }
 
     public static void addTask(ArrayList<Task> Tasks, Task item) {
         Tasks.add(item);
         Storage.appendFile(item);
-        Duke.printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
+        Ui.printBorder("Got it. I've added this task:\n" + item.printDescription() + "\n");
     }
 
     public static void deleteTask(ArrayList<Task> Tasks, String argument) {
@@ -40,6 +42,6 @@ public class TaskList {
         }
         String remainingTask = "Now you have " + Tasks.size() + " tasks in the list\n";
         //TODO abstract print number of Tasks
-        Duke.printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
+        Ui.printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
     }
 }

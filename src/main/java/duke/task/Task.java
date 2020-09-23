@@ -1,8 +1,8 @@
 package duke.task;
 
-import duke.Duke;
 import duke.DukeException;
 import duke.Storage;
+import duke.Ui;
 
 import java.util.ArrayList;
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class Task {
         }catch(IOException e){
             System.out.println("Unable to save changes\n");
         }
-        Duke.printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
+        Ui.printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
     public String getTaskType() {

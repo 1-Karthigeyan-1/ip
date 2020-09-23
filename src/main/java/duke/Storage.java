@@ -20,11 +20,11 @@ public class Storage {
         File storage = new File(FILE_PATH);
 
         if (!storage.exists()) {
-            Duke.printBorder("File does not exist, Attempting to create one....\n");
+            Ui.printBorder("File does not exist, Attempting to create one....\n");
             storage = createFile();
 
         }
-        Duke.printBorder("File found! Accessing Data...\n");
+        Ui.printBorder("File found! Accessing Data...\n");
         return storage;
 
     }
@@ -37,9 +37,9 @@ public class Storage {
             }
             storage.createNewFile();
         }catch (java.io.IOException e) {
-            Duke.printBorder("Unable to create file...Cri\n");
+            Ui.printBorder("Unable to create file...Cri\n");
         }
-        Duke.printBorder("File created in " + storage.getAbsolutePath() + "\n");
+        Ui.printBorder("File created in " + storage.getAbsolutePath() + "\n");
         return storage;
     }
 
@@ -50,7 +50,7 @@ public class Storage {
             storageData = new Scanner(storage);
         }
         catch(FileNotFoundException e) {
-            Duke.printBorder("Error has occurred! File not found!\n");
+            Ui.printBorder("Error has occurred! File not found!\n");
             return;
         }
         String Data;
@@ -78,7 +78,7 @@ public class Storage {
             }
             i++;
         }
-        Duke.printBorder("Finished loading.\n");
+        Ui.printBorder("Finished loading.\n");
     }
 
     public static void appendFile(Task item) {

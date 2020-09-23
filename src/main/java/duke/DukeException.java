@@ -7,10 +7,10 @@ public class DukeException extends Exception {
     public DukeException(String error) {
         switch(error) {
         case EMPTY_LIST:
-            Duke.printBorder("List is empty!!\n");
+            Ui.printBorder("List is empty!!\n");
             break;
         case ILLEGAL_NUMBER:
-            Duke.printBorder("Please input a valid number\n");
+            Ui.printBorder("Please input a valid number\n");
             break;
         }
     }

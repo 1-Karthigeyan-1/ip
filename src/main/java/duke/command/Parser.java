@@ -1,11 +1,10 @@
 package duke.command;
 
-import duke.Duke;
 import duke.DukeException;
+import duke.Ui;
 import duke.task.*;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Parser {
     public static final String LIST = "list";
@@ -25,22 +24,22 @@ public class Parser {
             try {
                 switch (arguments[0].toLowerCase()) {
                 case LIST:
-                    TaskList.showList(Duke.Tasks);
+                    TaskList.showList(TaskList.Tasks);
                     break;
                 case DONE:
-                    Task.completeTask(Duke.Tasks, arguments[1]);
+                    Task.completeTask(TaskList.Tasks, arguments[1]);
                     break;
                 case TODO:
-                    Todo.addTodo(Duke.Tasks, arguments[1]);
+                    Todo.addTodo(TaskList.Tasks, arguments[1]);
                     break;
                 case DEADLINE:
-                    Deadline.addDeadline(Duke.Tasks, arguments[1]);
+                    Deadline.addDeadline(TaskList.Tasks, arguments[1]);
                     break;
                 case EVENT:
-                    Event.addEvent(Duke.Tasks, arguments[1]);
+                    Event.addEvent(TaskList.Tasks, arguments[1]);
                     break;
                 case DELETE:
-                    TaskList.deleteTask(Duke.Tasks, arguments[1]);
+                    TaskList.deleteTask(TaskList.Tasks, arguments[1]);
                     break;
                 case BYE:
                     return;
@@ -50,9 +49,9 @@ public class Parser {
                     break;
                 }
             } catch (IndexOutOfBoundsException e) {
-                Duke.printBorder("The description of " + arguments[0] + " cannot be empty\n");
+                Ui.printBorder("The description of " + arguments[0] + " cannot be empty\n");
             } catch (NumberFormatException e) {
-                Duke.printBorder("Please input a number for " + arguments[0] + "\n");
+                Ui.printBorder("Please input a number for " + arguments[0] + "\n");
             } catch (DukeException e) {
                 //TODO do sth abt this
             }
@@ -65,7 +64,7 @@ public class Parser {
     }
 
     public static void printInvalidCommand() {
-        Duke.printBorder("Invalid command. Please try again.\n");
+        Ui.printBorder("Invalid command. Please try again.\n");
     }
 
 }
