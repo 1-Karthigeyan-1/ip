@@ -1,6 +1,6 @@
 package duke.task;
 
-import duke.command.Command;
+import duke.command.Parser;
 import java.util.ArrayList;
 
 public class Deadline extends Task {
@@ -33,12 +33,12 @@ public class Deadline extends Task {
         if (argument.isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        String[] arguments = Command.parseArgument(argument, "/by", 0);
+        String[] arguments = Parser.parseArgument(argument, "/by", 0);
         Task deadlineObject = new Deadline(arguments[0], arguments[1]);
         if (arguments[1].isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        Task.addTask(Tasks, deadlineObject);
+        TaskList.addTask(Tasks, deadlineObject);
     }
 
 

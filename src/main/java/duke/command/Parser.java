@@ -2,15 +2,12 @@ package duke.command;
 
 import duke.Duke;
 import duke.DukeException;
-import duke.task.Deadline;
-import duke.task.Event;
-import duke.task.Task;
-import duke.task.Todo;
+import duke.task.*;
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Command {
+public class Parser {
     public static final String LIST = "list";
     public static final String BYE = "bye";
     public static final String TODO = "todo";
@@ -28,7 +25,7 @@ public class Command {
             try {
                 switch (arguments[0].toLowerCase()) {
                 case LIST:
-                    Task.showList(Duke.Tasks);
+                    TaskList.showList(Duke.Tasks);
                     break;
                 case DONE:
                     Task.completeTask(Duke.Tasks, arguments[1]);
@@ -43,7 +40,7 @@ public class Command {
                     Event.addEvent(Duke.Tasks, arguments[1]);
                     break;
                 case DELETE:
-                    Task.deleteTask(Duke.Tasks, arguments[1]);
+                    TaskList.deleteTask(Duke.Tasks, arguments[1]);
                     break;
                 case BYE:
                     return;

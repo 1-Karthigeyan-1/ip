@@ -4,7 +4,7 @@ import duke.task.Task;
 import duke.task.Todo;
 import duke.task.Event;
 import duke.task.Deadline;
-import duke.command.Command;
+import duke.command.Parser;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -58,7 +58,7 @@ public class Storage {
 
         while (storageData.hasNext()) {
             Data = storageData.nextLine();
-            String[] arguments = Command.parseArgument(Data, " , ", 0);
+            String[] arguments = Parser.parseArgument(Data, " , ", 0);
             switch(arguments[0]) {
             case "T":
                 Tasks.add(new Todo(arguments[2]));
@@ -74,7 +74,7 @@ public class Storage {
                 break;
             }
             if(arguments[1].equals("\u2713") ) {
-                Tasks.get(i).isCompleted();
+                Tasks.get(i).completeTask();
             }
             i++;
         }

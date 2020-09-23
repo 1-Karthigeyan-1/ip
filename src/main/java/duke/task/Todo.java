@@ -24,7 +24,7 @@ public class Todo extends Task{
             throw new IndexOutOfBoundsException();
         }
         Task todoObject = new Todo(argument);
-        Task.addTask(Tasks, todoObject);
+        TaskList.addTask(Tasks, todoObject);
     }
 
 }

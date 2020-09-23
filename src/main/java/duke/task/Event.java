@@ -1,6 +1,6 @@
 package duke.task;
 
-import duke.command.Command;
+import duke.command.Parser;
 import java.util.ArrayList;
 
 public class Event extends Task {
@@ -33,11 +33,11 @@ public class Event extends Task {
         if (argument.isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        String[] arguments = Command.parseArgument(argument, "/at", 0);
+        String[] arguments = Parser.parseArgument(argument, "/at", 0);
         Task eventObject = new Event(arguments[0], arguments[1]);
         if (arguments[1].isBlank()) {
             throw new IndexOutOfBoundsException();
         }
-        Task.addTask(Tasks, eventObject);
+        TaskList.addTask(Tasks, eventObject);
     }
 }

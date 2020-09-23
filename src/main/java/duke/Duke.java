@@ -1,6 +1,6 @@
 package duke;
 
-import duke.command.Command;
+import duke.command.Parser;
 import duke.task.Task;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class Duke {
     public static void main(String[] args) {
         Storage.loadFile(Tasks);
         printGreeting();
-        Command.filterInput();
+        Parser.filterInput();
         printExit();
     }
 
