@@ -1,7 +1,6 @@
 package duke.command;
 
 import duke.task.Event;
-import duke.task.TaskList;
 
 public class EventCommand extends CommandArgument{
     public static final String CommandWord = "event";

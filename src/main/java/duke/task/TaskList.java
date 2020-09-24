@@ -3,16 +3,25 @@ package duke.task;
 import duke.Duke;
 import duke.DukeException;
 
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class TaskList {
-    private ArrayList<Task> Tasks;
+    private final ArrayList<Task> Tasks;
 
     public TaskList(){
         Tasks = new ArrayList<Task>();
-    };
+    }
+
+    public void MarkTask(String argument) throws DukeException {
+        int taskNumber = Integer.parseInt(argument) ;
+        if ((taskNumber > this.getSize()) || (taskNumber <= 0)) {
+            throw new DukeException("illegal number");
+        }
+        Task taskItem = this.getTask(taskNumber-1);
+        taskItem.completeTask();
+        Duke.getStorage().writeFile();
+        Duke.getUi().printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
+    }
 
 
     public void showList() throws DukeException {

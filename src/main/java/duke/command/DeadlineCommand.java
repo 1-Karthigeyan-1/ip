@@ -1,7 +1,6 @@
 package duke.command;
 
 import duke.task.Deadline;
-import duke.task.TaskList;
 
 public class DeadlineCommand extends CommandArgument{
     public static final String CommandWord = "deadline";

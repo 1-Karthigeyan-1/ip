@@ -10,8 +10,8 @@ public class Ui {
     }
 
     public void printGreeting() {
-        String greet = "Hello! I'm Duke\nWhat can I do for you?\n";
-        printBorder(greet);
+        String welcomeMessage = "Hello! I'm Duke\nWhat can I do for you?\n";
+        printBorder(welcomeMessage);
     }
 
     public void printExit() {

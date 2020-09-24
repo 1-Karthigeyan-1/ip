@@ -1,6 +1,7 @@
 package duke.command;
 
 public abstract class Command {
+
     public Command() {
         execute();
     }

@@ -1,12 +1,8 @@
-package duke;
+package duke.dataStorage;
 
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
-
-
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class CompilableData {
 

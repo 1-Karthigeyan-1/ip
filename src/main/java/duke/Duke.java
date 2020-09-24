@@ -1,6 +1,6 @@
 package duke;
 
-import duke.command.Parser;
+import duke.dataStorage.Storage;
 import duke.task.TaskList;
 
 public class Duke {

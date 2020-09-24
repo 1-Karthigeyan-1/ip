@@ -1,4 +1,4 @@
-package duke;
+package duke.dataStorage;
 
 public abstract class DataType {
     public static final String TODO_TYPE = "T";

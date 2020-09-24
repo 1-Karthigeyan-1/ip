@@ -1,7 +1,12 @@
-package duke;
+package duke.dataStorage;
 
-import duke.command.Parser;
-import duke.task.*;
+import duke.Duke;
+import duke.Parser;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.TaskList;
+import duke.task.Todo;
 
 public class ExtractableData {
     private static String divider = " , ";
@@ -29,6 +34,7 @@ public class ExtractableData {
             System.out.println("Unable to load this set of data...Data corrupted");
             break;
         }
+
         try {
             if (arguments[1].equals("\u2713")) {
                 item.completeTask();
@@ -36,6 +42,7 @@ public class ExtractableData {
         } catch (NullPointerException e) {
             Duke.getUi().printBorder("Wronh Type");
         }
+
         Tasks.addTask(item, true);
     }
 }

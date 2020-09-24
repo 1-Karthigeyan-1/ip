@@ -1,8 +1,7 @@
 package duke.task;
 
 import duke.Duke;
-import duke.command.Parser;
-import java.util.ArrayList;
+import duke.Parser;
 
 public class Event extends Task {
     protected String date;

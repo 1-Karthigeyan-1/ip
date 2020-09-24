@@ -1,6 +1,12 @@
-package duke.command;
+package duke;
 
-import duke.Duke;
+import duke.command.ByeCommand;
+import duke.command.DeadlineCommand;
+import duke.command.DeleteCommand;
+import duke.command.DoneCommand;
+import duke.command.EventCommand;
+import duke.command.ListCommand;
+import duke.command.TodoCommand;
 
 public class Parser {
 
