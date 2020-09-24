@@ -6,7 +6,7 @@ import duke.DukeException;
 import java.util.ArrayList;
 
 public class TaskList {
-    private final ArrayList<Task> Tasks;
+    private ArrayList<Task> Tasks;
 
     public TaskList(){
         Tasks = new ArrayList<Task>();
@@ -65,6 +65,22 @@ public class TaskList {
 
     public int getSize(){
         return Tasks.size();
+    }
+
+    public void lookup(String keyword) {
+        TaskList matchItems = new TaskList();
+
+        for (Task item : this.Tasks) {
+            String description = item.getDescription();
+            if (description.contains(keyword)) {
+                matchItems.addTask(item, true);
+            }
+        }
+        try {
+            matchItems.showList();
+        } catch (DukeException e) {
+            //The duke exception class prints out the error
+        }
     }
 
 }
