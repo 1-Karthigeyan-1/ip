@@ -3,7 +3,7 @@ package duke.command;
 import duke.task.Todo;
 
 public class TodoCommand extends CommandArgument{
-    public static final String CommandWord = "todo";
+    public static final String COMMAND_WORD = "todo";
 
     public TodoCommand(String description) {
         super(description);

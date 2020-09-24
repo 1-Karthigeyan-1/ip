@@ -22,13 +22,13 @@ public class Duke {
 
     public void run() {
         ui.printGreeting();
-        while(true) {
+        while (true) {
             String userInput = Duke.getUi().readCommand();
             Parser.filterInput(userInput);
         }
     }
 
-    public static Storage getStorage(){
+    public static Storage getStorage() {
         return storage;
     }
 
@@ -39,10 +39,4 @@ public class Duke {
     public static TaskList getTaskList() {
         return tasks;
     }
-
-/*} catch (IndexOutOfBoundsException e) {
-        Duke.getUi().printBorder("The description of " + arguments[0] + " cannot be empty\n");
-        } catch (NumberFormatException e) {
-        Duke.getUi().printBorder("Please input a number for " + arguments[0] + "\n");
-        } */
 }

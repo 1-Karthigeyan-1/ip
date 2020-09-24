@@ -1,6 +1,7 @@
 package duke.dataStorage;
 
 import duke.Duke;
+import duke.DukeException;
 import duke.Parser;
 import duke.task.Deadline;
 import duke.task.Event;
@@ -9,16 +10,20 @@ import duke.task.TaskList;
 import duke.task.Todo;
 
 public class ExtractableData {
-    private static String divider = " , ";
-    private static int divider_limit = 0;
-    public ExtractableData() {
-        super();
+    private static final String DIVIDER = " , ";
+    private static final int DIVIDER_LIMIT = 0;
+    private TaskList Tasks;
+    private String Data;
+    private Task item;
+
+    ExtractableData(String Data) {
+        this.Tasks = Duke.getTaskList();
+        this.Data = Data;
     }
 
-    public static void ExtractData(String Data) {
-        String[] arguments = Parser.parseArgument(Data, divider, divider_limit);
-        TaskList Tasks = Duke.getTaskList();
-        Task item = null;
+    public void ExtractData() throws DukeException {
+        String[] arguments = Parser.parseArgument(Data, DIVIDER, DIVIDER_LIMIT);
+
         switch (arguments[0]) {
         case DataType.TODO_TYPE:
             item = new Todo(arguments[2]);
@@ -27,12 +32,10 @@ public class ExtractableData {
             item = new Event(arguments[2], arguments[3]);
             break;
         case DataType.DEADLINE_TYPE:
-            item= new Deadline(arguments[2], arguments[3]);
+            item = new Deadline(arguments[2], arguments[3]);
             break;
         default:
-            //TODO throw exception
-            System.out.println("Unable to load this set of data...Data corrupted");
-            break;
+            throw new DukeException(DukeException.INVALID_TYPE);
         }
 
         try {
@@ -40,7 +43,7 @@ public class ExtractableData {
                 item.completeTask();
             }
         } catch (NullPointerException e) {
-            Duke.getUi().printBorder("Wronh Type");
+            Duke.getUi().printNullError();
         }
 
         Tasks.addTask(item, true);

@@ -1,6 +1,7 @@
 package duke.dataStorage;
 
 import duke.Duke;
+import duke.DukeException;
 import duke.task.Task;
 
 import java.io.File;
@@ -20,11 +21,8 @@ public class Storage {
 
     public File findFile() {
         if (!storageText.exists()) {
-            Duke.getUi().printBorder("File does not exist, Attempting to create one....\n");
             storageText = createFile();
-
         }
-        Duke.getUi().printBorder("File found! Accessing Data...\n");
         return storageText;
 
     }
@@ -36,9 +34,8 @@ public class Storage {
             }
             storageText.createNewFile();
         } catch (IOException e) {
-            Duke.getUi().printBorder("Unable to create file...Cri\n");
+            Duke.getUi().printBorder("Unable to create file...\n");
         }
-        Duke.getUi().printBorder("File created in " + storageText.getAbsolutePath() + "\n");
         return storageText;
     }
 
@@ -48,45 +45,48 @@ public class Storage {
 
         try {
             storageData = new Scanner(storage);
+            while (storageData.hasNext()) {
+                String data = storageData.nextLine();
+                new ExtractableData(data).ExtractData();
+            }
         } catch (FileNotFoundException e) {
             Duke.getUi().printBorder("Error has occurred! File not found!\n");
             return;
+        } catch (DukeException e) {
+            //DukeException has its own error message
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid number of Arguments");
         }
-
-        while (storageData.hasNext()) {
-            String data = storageData.nextLine();
-            ExtractableData.ExtractData(data);
-        }
-        Duke.getUi().printBorder("Finished loading.\n");
     }
 
     public void saveData(Task item) {
         try {
             FileWriter appendWrite = new FileWriter(filePath, true);
-            String data = CompilableData.CompileData(item);
+            String data =  new CompilableData(item).CompileData();
             appendWrite.write(data);
             appendWrite.close();
-            } catch (IOException e) {
-                Duke.getUi().printBorder("Unable to Save!");
-            }
-        System.out.println("Save complete");
+        } catch (IOException e) {
+            Duke.getUi().printBorder("Unable to Save!");
+        } catch (DukeException e) {
+            //DukeException has its own error message
+        }
     }
 
-    //TODO solve io exception
     public void writeFile() {
         try {
             FileWriter overWrite = new FileWriter(filePath, false);
             String data = "";
             for (int i = 0; i < Duke.getTaskList().getSize(); i++) {
                 Task item = Duke.getTaskList().getTask(i);
-                data += CompilableData.CompileData(item);
+                data += new CompilableData(item).CompileData();
             }
             overWrite.write(data);
             overWrite.close();
         } catch (IOException e) {
             Duke.getUi().printBorder("Unable to Save!");
+        } catch (DukeException e) {
+            //DukeException has its own error message
         }
-        System.out.println("Save complete");
     }
 
 }

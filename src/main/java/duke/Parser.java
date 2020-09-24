@@ -13,29 +13,29 @@ public class Parser {
     public static void filterInput(String userInput) {
         String[] arguments = parseArgument(userInput, " ", 2);
         switch (arguments[0].toLowerCase()) {
-        case ListCommand.CommandWord:
+        case ListCommand.COMMAND_WORD:
             new ListCommand();
             break;
-        case DoneCommand.CommandWord:
+        case DoneCommand.COMMAND_WORD:
             new DoneCommand(arguments[1]);
             break;
-        case TodoCommand.CommandWord:
+        case TodoCommand.COMMAND_WORD:
             new TodoCommand(arguments[1]);
             break;
-        case DeadlineCommand.CommandWord:
+        case DeadlineCommand.COMMAND_WORD:
             new DeadlineCommand(arguments[1]);
             break;
-        case EventCommand.CommandWord:
+        case EventCommand.COMMAND_WORD:
             new EventCommand(arguments[1]);
             break;
-        case DeleteCommand.CommandWord:
+        case DeleteCommand.COMMAND_WORD:
             new DeleteCommand(arguments[1]);
             break;
-        case ByeCommand.CommandWord:
+        case ByeCommand.COMMAND_WORD:
             new ByeCommand();
             break;
         default:
-            Duke.getUi().printInvalidCommand();
+            Duke.getUi().printBorder("Invalid command. Please try again.\n");
             break;
         }
     }

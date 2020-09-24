@@ -3,7 +3,7 @@ package duke.command;
 import duke.Duke;
 
 public class ByeCommand extends Command{
-    public static final String CommandWord = "bye";
+    public static final String COMMAND_WORD= "bye";
 
     public ByeCommand(){
         execute();

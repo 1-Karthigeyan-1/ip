@@ -4,7 +4,8 @@ import duke.Duke;
 import duke.DukeException;
 
 public class DoneCommand extends CommandArgument{
-    public static final String CommandWord = "done";
+    public static final String COMMAND_WORD = "done";
+
     public DoneCommand(String description) {
         super(description);
     }
@@ -12,10 +13,12 @@ public class DoneCommand extends CommandArgument{
     @Override
     public void execute(String description) {
         try {
-            Duke.getTaskList().MarkTask(description);
+            Duke.getTaskList().markTaskinList(description);
         } catch (DukeException e) {
-            //TODO sth abt this
+            //The DukeException class prints out the error
+        } catch (NumberFormatException e) {
+            Duke.getUi().printNumberFormatError(description);
         }
     }
 
-}
+    }

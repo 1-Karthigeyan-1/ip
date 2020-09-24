@@ -12,8 +12,8 @@ public class TaskList {
         Tasks = new ArrayList<Task>();
     }
 
-    public void MarkTask(String argument) throws DukeException {
-        int taskNumber = Integer.parseInt(argument) ;
+    public void markTaskinList(String argument) throws DukeException {
+        int taskNumber = Integer.parseInt(argument);
         if ((taskNumber > this.getSize()) || (taskNumber <= 0)) {
             throw new DukeException("illegal number");
         }
@@ -53,7 +53,9 @@ public class TaskList {
             String remainingTask = "Now you have " + this.getSize() + " tasks in the list\n";
             Duke.getUi().printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
         } catch (NumberFormatException e) {
-            Duke.getUi().printBorder(argument + " is not a number!\n");
+            Duke.getUi().printNumberFormatError(argument);
+        } catch (IndexOutOfBoundsException e) {
+            Duke.getUi().printIndexError();
         }
     }
 

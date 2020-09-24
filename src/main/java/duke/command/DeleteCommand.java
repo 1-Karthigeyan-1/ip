@@ -3,7 +3,7 @@ package duke.command;
 import duke.Duke;
 
 public class DeleteCommand extends CommandArgument{
-    public static final String CommandWord = "delete";
+    public static final String COMMAND_WORD = "delete";
 
     public DeleteCommand(String description) {
         super(description);

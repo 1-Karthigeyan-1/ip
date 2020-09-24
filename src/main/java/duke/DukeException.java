@@ -1,8 +1,9 @@
 package duke;
 
 public class DukeException extends Exception {
-    protected static final String EMPTY_LIST = "empty list";
-    protected static final String ILLEGAL_NUMBER = "illegal number";
+    public static final String EMPTY_LIST = "empty list";
+    public static final String ILLEGAL_NUMBER = "illegal number";
+    public static final String INVALID_TYPE = "invalid type";
 
     public DukeException(String error) {
         switch(error) {
@@ -12,8 +13,11 @@ public class DukeException extends Exception {
         case ILLEGAL_NUMBER:
             Duke.getUi().printBorder("Please input a valid number\n");
             break;
+        case INVALID_TYPE:
+            Duke.getUi().printBorder("Invalid Task type!\n");
+            break;
         default:
-            Duke.getUi().printBorder("Unknown Error\n");
+            Duke.getUi().printBorder("Error Unknown\n");
         }
     }
 }

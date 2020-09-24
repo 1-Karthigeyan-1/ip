@@ -1,8 +1,8 @@
 package duke.dataStorage;
 
 public abstract class DataType {
-    public static final String TODO_TYPE = "T";
-    public static final String EVENT_TYPE = "E";
-    public static final String DEADLINE_TYPE = "D";
+    protected static final String TODO_TYPE = "T";
+    protected static final String EVENT_TYPE = "E";
+    protected static final String DEADLINE_TYPE = "D";
 
 }
