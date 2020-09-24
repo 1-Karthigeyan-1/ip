@@ -2,8 +2,6 @@ package duke.task;
 
 import duke.Duke;
 
-import java.util.ArrayList;
-
 public class Todo extends Task{
     private static final String taskType = "T";
 

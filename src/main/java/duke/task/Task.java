@@ -40,15 +40,10 @@ public abstract class Task {
         }
         Task taskItem = Tasks.getTask(taskNumber-1);
         taskItem.completeTask();
-        try {
-            Duke.getStorage().writeFile();
-        }catch(IOException e){
-            System.out.println("Unable to save changes\n");
-        }
+        Duke.getStorage().writeFile();
         Duke.getUi().printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
     public abstract String getTaskType();
-
 
 }

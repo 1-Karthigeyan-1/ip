@@ -44,48 +44,47 @@ public class Storage {
     public void loadFile() {
         File storage = findFile();
         Scanner storageData;
+
         try {
             storageData = new Scanner(storage);
         } catch (FileNotFoundException e) {
             Duke.getUi().printBorder("Error has occurred! File not found!\n");
             return;
         }
-        String data;
-        int index = 0;
 
         while (storageData.hasNext()) {
-            data = storageData.nextLine();
-            DataHandler.decompileData(data, index);
-            index++;
+            String data = storageData.nextLine();
+            ExtractableData.ExtractData(data);
         }
         Duke.getUi().printBorder("Finished loading.\n");
     }
 
     public void saveData(Task item) {
-        String description = item.getDescription();
-        String taskType = item.getTaskType();
-        String done = item.getStatusIcon();
         try {
             FileWriter appendWrite = new FileWriter(filePath, true);
-            DataHandler.CompileData(item, description, taskType, done, appendWrite);
+            String data = CompilableData.CompileData(item);
+            appendWrite.write(data);
             appendWrite.close();
-        } catch (java.io.IOException e) {
-            System.out.println("Oh no! IOException has occurred!");
-        }
+            } catch (IOException e) {
+                Duke.getUi().printBorder("Unable to Save!");
+            }
         System.out.println("Save complete");
     }
 
     //TODO solve io exception
-    public void writeFile() throws IOException {
-        FileWriter overWrite = new FileWriter(filePath, false);
-        for (int i = 0; i < Duke.getTaskList().getSize(); i++){
-            Task item = Duke.getTaskList().getTask(i);
-            String description = item.getDescription();
-            String taskType = item.getTaskType();
-            String done = item.getStatusIcon();
-            DataHandler.CompileData(item, description, taskType, done, overWrite);
+    public void writeFile() {
+        try {
+            FileWriter overWrite = new FileWriter(filePath, false);
+            String data = "";
+            for (int i = 0; i < Duke.getTaskList().getSize(); i++) {
+                Task item = Duke.getTaskList().getTask(i);
+                data += CompilableData.CompileData(item);
+            }
+            overWrite.write(data);
+            overWrite.close();
+        } catch (IOException e) {
+            Duke.getUi().printBorder("Unable to Save!");
         }
-        overWrite.close();
         System.out.println("Save complete");
     }
 

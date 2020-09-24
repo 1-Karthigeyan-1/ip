@@ -15,6 +15,4 @@ public class ByeCommand extends Command{
         System.exit(0);
     }
 
-
-
 }

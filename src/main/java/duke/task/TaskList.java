@@ -35,19 +35,17 @@ public class TaskList {
     }
 
     public void deleteTask(String argument) {
-        String removalNotice = "Noted. I've removed this task:\n";
-        //TODO throw number format exception && check for valid number
-        int taskNumber = Integer.parseInt(argument);
-        Task deletedObject = Tasks.get(taskNumber - 1);
-        Tasks.remove(taskNumber - 1);
         try {
+            String removalNotice = "Noted. I've removed this task:\n";
+            int taskNumber = Integer.parseInt(argument);
+            Task deletedObject = this.getTask(taskNumber - 1);
+            Tasks.remove(taskNumber - 1);
             Duke.getStorage().writeFile();
-        }catch(IOException e){
-            System.out.println("Unable to save changes\n");
+            String remainingTask = "Now you have " + this.getSize() + " tasks in the list\n";
+            Duke.getUi().printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
+        } catch (NumberFormatException e) {
+            Duke.getUi().printBorder(argument + " is not a number!\n");
         }
-        String remainingTask = "Now you have " + Tasks.size() + " tasks in the list\n";
-        //TODO abstract print number of Tasks
-        Duke.getUi().printBorder(removalNotice + "  " + deletedObject.printDescription() + "\n" + remainingTask);
     }
 
     public Task getTask(int index){

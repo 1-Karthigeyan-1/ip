@@ -12,6 +12,8 @@ public class DukeException extends Exception {
         case ILLEGAL_NUMBER:
             Duke.getUi().printBorder("Please input a valid number\n");
             break;
+        default:
+            Duke.getUi().printBorder("Unknown Error\n");
         }
     }
 }
