@@ -119,7 +119,7 @@ This includes commands that change or edit the data.
 Tasks data is stored in `data/tasks.txt` file.   
 If no such file or directory is found, a new `data/tasks.txt` is created.  
 
-### Command Summary
+## Command Summary
 **Action** | **Format** 
 --- | --- 
 **Todo** | `todo <description>`  
