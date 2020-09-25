@@ -114,3 +114,10 @@ Example: `bye`
 ```
 Bye. Hope to see you again soon!
 ```
+### 9. Saving data
+Tasks data is saved in the hard disk automatically.
+This includes commands that change or edit the data.
+
+### 10. Loading data
+Tasks data is stored in `data/tasks.txt` file. 
+If no such file or direcotry is found, a new `data/tasks.txt` is created.
