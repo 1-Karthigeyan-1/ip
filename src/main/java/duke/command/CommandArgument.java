@@ -1,13 +1,18 @@
 package duke.command;
 
+import duke.DukeException;
+
 /**
  * Represents the Command keyword that is used in the user input.
- * This class assumes that the command has arguments
  */
 public abstract class CommandArgument {
 
     public CommandArgument(String[] arguments) {
-        execute(arguments);
+        try {
+            execute(arguments);
+        } catch (DukeException e) {
+            //Error shown in DukeException
+        }
     }
 
     /**
@@ -15,8 +20,26 @@ public abstract class CommandArgument {
      *
      * @param arguments parsed arguments for commands
      */
-    public abstract void execute(String[] arguments);
+    public void execute(String[] arguments) throws DukeException {
+            checkSize(arguments);
+    };
 
-    
+    /**
+     * Checks the size limit of arguments for every command
+     *
+     * @param arguments parsed arguments
+     * @throws DukeException if number of arguments is not equal to intended number of arguments
+     */
+    public void checkSize(String[] arguments) throws DukeException {
+        if (arguments.length != getLimit()) {
+            throw new DukeException(DukeException.ARGUMENT_SIZE);
+        }
+    }
+
+    /**
+     * Gets the limit of arguments for specific command
+     * @return the inteded argument a command is supposed to have
+     */
+    public abstract int getLimit();
 
 }

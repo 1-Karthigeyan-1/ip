@@ -8,6 +8,7 @@ import duke.DukeException;
  */
 public class DoneCommand extends CommandArgument{
     public static final String COMMAND_WORD = "done";
+    private static final int MAX_LIMIT = 2;
 
     public DoneCommand(String[] arguments) {
         super(arguments);
@@ -16,11 +17,12 @@ public class DoneCommand extends CommandArgument{
     /**
      * Executes the done command by marking the specific task
      *
-     * @param description  Additional argument that comes after the done command.
+     * @param arguments parsed arguments for done command.
      */
     @Override
     public void execute(String[] arguments) {
         try {
+            super.execute(arguments);
             Duke.getTaskList().markTaskinList(arguments[1]);
         } catch (DukeException e) {
             //The DukeException class prints out the error
@@ -29,4 +31,9 @@ public class DoneCommand extends CommandArgument{
         }
     }
 
+    @Override
+    public int getLimit() {
+        return MAX_LIMIT;
     }
+
+}
