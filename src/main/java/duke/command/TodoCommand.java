@@ -12,11 +12,6 @@ public class TodoCommand extends CommandArgument{
         super(description);
     }
 
-    @Override
-    public void execute() {
-        execute();
-    }
-
     /**
      * Executes the todo command by adding the todo task to the program.
      *
