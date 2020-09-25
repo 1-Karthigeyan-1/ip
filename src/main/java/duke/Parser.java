@@ -8,8 +8,16 @@ import duke.command.EventCommand;
 import duke.command.ListCommand;
 import duke.command.TodoCommand;
 
+/**
+ * Parses the user input.
+ */
 public class Parser {
 
+    /**
+     * Filters the user input bu sorting out the appropriate  command keyword.
+     *
+     * @param userInput user input
+     */
     public static void filterInput(String userInput) {
         String[] arguments = parseArgument(userInput, " ", 2);
         switch (arguments[0].toLowerCase()) {
@@ -40,6 +48,15 @@ public class Parser {
         }
     }
 
+    /**
+     * Splits the arguments in acoordance with the divider and limit used.
+     *
+     * @param argument argument that is to be parsed
+     * @param divider string used to parse the arguments
+     * @param limit number of times to parse the arguments
+     *
+     * @return a list of parsed arguments
+     */
     public static String[] parseArgument (String argument, String divider, int limit) {
         String[] arguments = argument.split(divider, limit);
         return arguments;

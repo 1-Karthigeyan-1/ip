@@ -10,15 +10,28 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Handles the file in hard drive that is needed for storage
+ */
 public class Storage {
     private String filePath;
     private File storageText;
 
+    /**
+     * Creates a reference to the file in the filepath
+     *
+     * @param filePath path of storage file in hard drive
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
         this.storageText = new File(filePath);
     }
 
+    /**
+     * Attempts to find file in the hard drive
+     *
+     * @return reference to the file
+     */
     public File findFile() {
         if (!storageText.exists()) {
             storageText = createFile();
@@ -27,6 +40,12 @@ public class Storage {
 
     }
 
+    /**
+     * creates a new file and a directory if file does not
+     * exist in the directory or the directory does not exist
+     *
+     * @return reference to the file
+     */
     public File createFile() {
         try {
             if (!storageText.getParentFile().exists()) {
@@ -39,6 +58,10 @@ public class Storage {
         return storageText;
     }
 
+    /**
+     * Attempts to load data from the storage file
+     * into the program
+     */
     public void loadFile() {
         File storage = findFile();
         Scanner storageData;
@@ -59,6 +82,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Saves any task that has been added into the hard drive
+     *
+     * @param item task item that had been added into the list
+     */
     public void saveData(Task item) {
         try {
             FileWriter appendWrite = new FileWriter(filePath, true);
@@ -72,6 +100,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Overwrites the data in storage file with the data currently in the program
+     */
     public void writeFile() {
         try {
             FileWriter overWrite = new FileWriter(filePath, false);

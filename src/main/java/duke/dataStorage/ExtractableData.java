@@ -9,6 +9,9 @@ import duke.task.Task;
 import duke.task.TaskList;
 import duke.task.Todo;
 
+/**
+ * Handles data that is to be extracted from the storage file into the program
+ */
 public class ExtractableData {
     private static final String DIVIDER = " , ";
     private static final int DIVIDER_LIMIT = 0;
@@ -16,11 +19,22 @@ public class ExtractableData {
     private String Data;
     private Task item;
 
+    /**
+     *Stores item in the class
+     *
+     * @param Data Information of a task in storage
+     */
     ExtractableData(String Data) {
         this.Tasks = Duke.getTaskList();
         this.Data = Data;
     }
 
+    /**
+     * Extracts data from the compiled version and adds it to tasklist
+     * in the program.
+     *
+     * @throws DukeException if type of task is invalid
+     */
     public void ExtractData() throws DukeException {
         String[] arguments = Parser.parseArgument(Data, DIVIDER, DIVIDER_LIMIT);
 
