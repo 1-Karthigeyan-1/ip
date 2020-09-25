@@ -7,6 +7,7 @@ public class DukeException extends Exception {
     public static final String EMPTY_LIST = "empty list";
     public static final String ILLEGAL_NUMBER = "illegal number";
     public static final String INVALID_TYPE = "invalid type";
+    public static final String INVALID_DATETIME = "invalid DateTime";
 
     /**
      * prints out the appropriate error based on the state of error.
@@ -23,6 +24,10 @@ public class DukeException extends Exception {
             break;
         case INVALID_TYPE:
             Duke.getUi().printBorder("Invalid Task type!\n");
+            break;
+        case INVALID_DATETIME:
+            Duke.getUi().printBorder("Invalid Date or Time.\n Please enter in the following format:\n" +
+                    "dd/MM/yyyy HHmm\n");
             break;
         default:
             Duke.getUi().printBorder("Error Unknown\n");

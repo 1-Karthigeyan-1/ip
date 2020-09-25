@@ -42,7 +42,7 @@ public class CompilableData {
             formattedData = String.format("%s , %s\n", formattedData, date);
             break;
         case DataType.DEADLINE_TYPE:
-            String by = ((Deadline) item).getBy();
+            String by = ((Deadline) item).getDate();
             formattedData = String.format("%s , %s\n", formattedData, by);
             break;
         default:

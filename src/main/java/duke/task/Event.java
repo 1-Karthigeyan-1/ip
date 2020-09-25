@@ -1,33 +1,36 @@
 package duke.task;
 
+import duke.DateTimeParser;
 import duke.Duke;
+import duke.DukeException;
 import duke.Parser;
+
+import java.time.LocalDateTime;
 
 /**
  * Represents the properties of event task.
  */
 public class Event extends Task {
-    protected String date;
+    protected LocalDateTime date;
     private static final String taskType = "E";
+
 
     /**
      * Stores details of event in the instance.
      *
      * @param description description of deadline task
-     * @param date date and time
+     * @param at date and time
      * @throws IndexOutOfBoundsException if blank arguments is given
      */
-    public Event(String description, String date) throws IndexOutOfBoundsException {
+    public Event(String description, String at) throws DukeException {
         super(description);
-        if (date.isBlank()) {
-            throw new IndexOutOfBoundsException();
-        }
-        this.date = date;
+        this.date = DateTimeParser.parseDateTime(at);
+
     }
 
     @Override
     public String printDescription() {
-        return "["+ getTaskType() + "]" + super.printDescription() + " (at:" + date + ")";
+        return "["+ getTaskType() + "]" + super.printDescription() + " (at: " + getDate() + ")";
     }
 
     @Override
@@ -41,24 +44,24 @@ public class Event extends Task {
      * @return date and time of object
      */
     public String getDate() {
-        return date;
+        return DateTimeParser.convertDateTime(date);
     }
+
 
     /**
      * Add event task to the tasklist by parsing the arguments.
      *
      * @param argument raw description of event
-     * @throws IndexOutOfBoundsException if argument is blank
      */
-    public static void addEvent(String argument) throws IndexOutOfBoundsException{
-        if (argument.isBlank()) {
-            throw new IndexOutOfBoundsException();
+    public static void addEvent(String argument) {
+        try {
+            String[] arguments = Parser.parseArgument(argument, " /at ", 0);
+            Task eventObject = new Event(arguments[0], arguments[1]);
+            Duke.getTaskList().addTask(eventObject, false);
+        } catch (DukeException e) {
+            //Error already printed out
+        } catch (IndexOutOfBoundsException e) {
+            Duke.getUi().printBorder("Missing \"/at\" argument.\n");
         }
-        String[] arguments = Parser.parseArgument(argument, "/at", 0);
-        Task eventObject = new Event(arguments[0], arguments[1]);
-        if (arguments[1].isBlank()) {
-            throw new IndexOutOfBoundsException();
-        }
-        Duke.getTaskList().addTask(eventObject, false);
     }
 }

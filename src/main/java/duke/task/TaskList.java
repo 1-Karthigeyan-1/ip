@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Represents the list of tasks stored in the program.
  */
 public class TaskList {
-    private final ArrayList<Task> Tasks;
+    private ArrayList<Task> Tasks;
 
     /**
      * Creates new instacne of array list.
@@ -103,6 +103,22 @@ public class TaskList {
      */
     public int getSize(){
         return Tasks.size();
+    }
+
+    public void lookupTask(String keyword) {
+        TaskList matchItems = new TaskList();
+
+        for (Task item : this.Tasks) {
+            String description = item.getDescription();
+            if (description.contains(keyword)) {
+                matchItems.addTask(item, true);
+            }
+        }
+        try {
+            matchItems.showList();
+        } catch (DukeException e) {
+            //The duke exception class prints out the error
+        }
     }
 
 }
