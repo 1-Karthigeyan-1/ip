@@ -41,7 +41,7 @@ Got it. I've added this task:
 [E][✘] party (at: Dec 31 2020 23:00)
 ```
 
-### 3. Adding a Deadline task: `Event`  
+### 3. Adding a Deadline task: `Deadline`  
 Adds a Deadline task  
 Format: `deadline <description> /at <date time>`  
 Supported date time formats: `dd/MM/yyyy HHmm` `MMM dd yyy HH:mm`  
@@ -118,3 +118,15 @@ This includes commands that change or edit the data.
 ### 10. Loading data  
 Tasks data is stored in `data/tasks.txt` file.   
 If no such file or directory is found, a new `data/tasks.txt` is created.  
+
+### Command Summary
+**Action** | **Format** 
+--- | --- 
+**Todo** | `todo <description>`  
+**Event** | `event <description> /at <date time>`  
+**Deadline** | `deadline <description> /at <date time>`
+**List** | `list`  
+**Done** | `done <number>` 
+**Find** | `find <keyword>`  
+**Delete** | `delete <number>` 
+**Exit** | `bye`  
