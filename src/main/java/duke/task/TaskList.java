@@ -67,7 +67,7 @@ public class TaskList {
         return Tasks.size();
     }
 
-    public void lookup(String keyword) {
+    public void lookupTask(String keyword) {
         TaskList matchItems = new TaskList();
 
         for (Task item : this.Tasks) {

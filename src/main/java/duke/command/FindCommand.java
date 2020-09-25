@@ -10,6 +10,6 @@ public class FindCommand extends CommandArgument{
 
     @Override
     public void execute(String description) {
-        Duke.getTaskList().lookup(description);
+        Duke.getTaskList().lookupTask(description);
     }
 }
