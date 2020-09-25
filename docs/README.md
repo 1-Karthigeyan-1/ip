@@ -119,15 +119,15 @@ This includes commands that change or edit the data.
 Tasks data is stored in `data/tasks.txt` file.   
 If no such file or directory is found, a new `data/tasks.txt` is created.  
 
-## Command Summary
-**Action** | **Format** 
---- | --- 
-**Todo** | `todo <description>`  
-**Event** | `event <description> /at <date time>`  
-**Deadline** | `deadline <description> /at <date time>`
-**List** | `list`  
-**Done** | `done <number>` 
-**Find** | `find <keyword>`  
-**Delete** | `delete <number>` 
-**Exit** | `bye`  
+## Command Summary  
+|**Action** | **Format** |
+|---|---|
+| **Todo** | `todo <description>` | 
+| **Event** | `event <description> /at <date time>` | 
+| **Deadline** | `deadline <description> /at <date time>` |
+| **List** | `list` |
+| **Done** | `done <number>` |
+| **Find** | `find <keyword>` |
+| **Delete** | `delete <number>` |
+| **Exit** | `bye` |
 
