@@ -8,8 +8,8 @@ import duke.Duke;
 public class DeleteCommand extends CommandArgument{
     public static final String COMMAND_WORD = "delete";
 
-    public DeleteCommand(String description) {
-        super(description);
+    public DeleteCommand(String[] arguments) {
+        super(arguments);
     }
 
     /**
@@ -18,8 +18,8 @@ public class DeleteCommand extends CommandArgument{
      * @param description Additional argument that comes after the delete command.
      */
     @Override
-    public void execute(String description) {
-        Duke.getTaskList().deleteTask(description);
+    public void execute(String[] arguments) {
+        Duke.getTaskList().deleteTask(arguments[1]);
     }
 
 

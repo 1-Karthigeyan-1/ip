@@ -6,11 +6,11 @@ import duke.DukeException;
 /**
  * Represents the list command used in the user input
  */
-public class ListCommand extends Command{
+public class ListCommand extends CommandArgument{
     public static final String COMMAND_WORD = "list";
 
-    public ListCommand() {
-        super();
+    public ListCommand(String[] arguments) {
+        super(arguments);
 
     }
 
@@ -18,7 +18,7 @@ public class ListCommand extends Command{
      * Executes the list command by showing the list of tasks in program.
      */
     @Override
-    public void execute() {
+    public void execute(String[] arguments) {
         try {
             Duke.getTaskList().showList();
         } catch (DukeException e) {

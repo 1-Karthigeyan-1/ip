@@ -23,28 +23,28 @@ public class Parser {
         String[] arguments = parseArgument(userInput, " ", 2);
         switch (arguments[0].toLowerCase()) {
         case ListCommand.COMMAND_WORD:
-            new ListCommand();
+            new ListCommand(arguments);
             break;
         case DoneCommand.COMMAND_WORD:
-            new DoneCommand(arguments[1]);
+            new DoneCommand(arguments);
             break;
         case TodoCommand.COMMAND_WORD:
-            new TodoCommand(arguments[1]);
+            new TodoCommand(arguments);
             break;
         case DeadlineCommand.COMMAND_WORD:
-            new DeadlineCommand(arguments[1]);
+            new DeadlineCommand(arguments);
             break;
         case EventCommand.COMMAND_WORD:
-            new EventCommand(arguments[1]);
+            new EventCommand(arguments);
             break;
         case DeleteCommand.COMMAND_WORD:
-            new DeleteCommand(arguments[1]);
+            new DeleteCommand(arguments);
             break;
         case ByeCommand.COMMAND_WORD:
-            new ByeCommand();
+            new ByeCommand(arguments);
             break;
         case FindCommand.COMMAND_WORD:
-            new FindCommand(arguments[1]);
+            new FindCommand(arguments);
             break;
         default:
             Duke.getUi().printBorder("Invalid command. Please try again.\n");

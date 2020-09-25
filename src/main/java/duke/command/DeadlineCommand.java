@@ -8,8 +8,8 @@ import duke.task.Deadline;
 public class DeadlineCommand extends CommandArgument{
     public static final String COMMAND_WORD = "deadline";
 
-    public DeadlineCommand(String description) {
-        super(description);
+    public DeadlineCommand(String[] arguments) {
+        super(arguments);
     }
 
     /**
@@ -18,8 +18,8 @@ public class DeadlineCommand extends CommandArgument{
      * @param description Additional argument that comes after the deadline command.
      */
     @Override
-    public void execute(String description) {
-        Deadline.addDeadline(description);
+    public void execute(String[] arguments) {
+        Deadline.addDeadline(arguments[1]);
     }
 
 }

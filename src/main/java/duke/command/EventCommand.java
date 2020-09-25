@@ -8,8 +8,8 @@ import duke.task.Event;
 public class EventCommand extends CommandArgument{
     public static final String COMMAND_WORD = "event";
 
-    public EventCommand(String description) {
-        super(description);
+    public EventCommand(String[] arguments) {
+        super(arguments);
     }
 
     /**
@@ -18,8 +18,8 @@ public class EventCommand extends CommandArgument{
      * @param description  Additional argument that comes after the event command.
      */
     @Override
-    public void execute(String description) {
-        Event.addEvent(description);
+    public void execute(String[] arguments) {
+        Event.addEvent(arguments[1]);
     }
 
 }

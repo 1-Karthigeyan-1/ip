@@ -9,8 +9,8 @@ import duke.DukeException;
 public class DoneCommand extends CommandArgument{
     public static final String COMMAND_WORD = "done";
 
-    public DoneCommand(String description) {
-        super(description);
+    public DoneCommand(String[] arguments) {
+        super(arguments);
     }
 
     /**
@@ -19,13 +19,13 @@ public class DoneCommand extends CommandArgument{
      * @param description  Additional argument that comes after the done command.
      */
     @Override
-    public void execute(String description) {
+    public void execute(String[] arguments) {
         try {
-            Duke.getTaskList().markTaskinList(description);
+            Duke.getTaskList().markTaskinList(arguments[1]);
         } catch (DukeException e) {
             //The DukeException class prints out the error
         } catch (NumberFormatException e) {
-            Duke.getUi().printNumberFormatError(description);
+            Duke.getUi().printNumberFormatError(arguments[1]);
         }
     }
 

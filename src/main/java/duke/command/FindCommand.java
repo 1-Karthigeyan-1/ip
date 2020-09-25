@@ -8,8 +8,8 @@ import duke.Duke;
 public class FindCommand extends CommandArgument{
     public static final String COMMAND_WORD = "find";
 
-    public FindCommand(String description) {
-        super(description);
+    public FindCommand(String[] arguments) {
+        super(arguments);
     }
 
     /**
@@ -18,7 +18,7 @@ public class FindCommand extends CommandArgument{
      * @param description keyword used to search for task
      */
     @Override
-    public void execute(String description) {
-        Duke.getTaskList().lookupTask(description);
+    public void execute(String[] arguments) {
+        Duke.getTaskList().lookupTask(arguments[1]);
     }
 }

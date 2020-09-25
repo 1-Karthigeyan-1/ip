@@ -8,8 +8,8 @@ import duke.task.Todo;
 public class TodoCommand extends CommandArgument{
     public static final String COMMAND_WORD = "todo";
 
-    public TodoCommand(String description) {
-        super(description);
+    public TodoCommand(String[] arguments) {
+        super(arguments);
     }
 
     /**
@@ -18,8 +18,8 @@ public class TodoCommand extends CommandArgument{
      * @param description  Additional argument that comes after the todo command.
      */
     @Override
-    public void execute(String description) {
-        Todo.addTodo(description);
+    public void execute(String[] arguments) {
+        Todo.addTodo(arguments[1]);
     }
 
 }
