@@ -122,8 +122,6 @@ If no such file or directory is found, a new `data/tasks.txt` is created.
 ## Command Summary  
 |**Action** | **Format** |  
 
-|---|---|
-
 | **Todo** | `todo <description>` | 
 | **Event** | `event <description> /at <date time>` | 
 | **Deadline** | `deadline <description> /at <date time>` |
