@@ -1,5 +1,8 @@
 package duke.task;
 
+import duke.Duke;
+import duke.DukeException;
+
 /**
  * Represents the properties of a task.
  */
@@ -12,7 +15,10 @@ public abstract class Task {
      *
      * @param description description of task
      */
-    public Task(String description) {
+    public Task(String description) throws DukeException {
+        if (description.isBlank()) {
+            throw new DukeException(DukeException.INVALID_DESCRIPTION);
+        }
         this.description = description;
         this.isDone = false;
     }

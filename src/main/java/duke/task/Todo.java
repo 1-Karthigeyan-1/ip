@@ -1,6 +1,7 @@
 package duke.task;
 
 import duke.Duke;
+import duke.DukeException;
 
 /**
  * Represents the properties of todo task.
@@ -13,7 +14,7 @@ public class Todo extends Task{
      *
      * @param description description of task
      */
-    public Todo(String description) {
+    public Todo(String description) throws DukeException {
         super(description);
     }
 
@@ -33,10 +34,7 @@ public class Todo extends Task{
      * @param argument raw description of event
      * @throws IndexOutOfBoundsException if argument is blank
      */
-    public static void addTodo(String argument) throws IndexOutOfBoundsException {
-        if (argument.isBlank()) {
-            throw new IndexOutOfBoundsException();
-        }
+    public static void addTodo(String argument) throws DukeException {
         Task item = new Todo(argument);
         Duke.getTaskList().addTask(item, false);
     }

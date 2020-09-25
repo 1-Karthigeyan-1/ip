@@ -14,7 +14,7 @@ public class TaskList {
     /**
      * Creates new instacne of array list.
      */
-    public TaskList(){
+    public TaskList() {
         Tasks = new ArrayList<Task>();
     }
 
