@@ -1,18 +1,19 @@
 package duke.task;
 
+import duke.DateTimeParser;
 import duke.Duke;
+import duke.DukeException;
 import duke.Parser;
 
+import java.time.LocalDateTime;
+
 public class Deadline extends Task {
-    protected String by;
+    protected LocalDateTime date;
     private static final String taskType = "D";
 
-    public Deadline(String description, String by) throws IndexOutOfBoundsException {
+    public Deadline(String description, String by) throws DukeException{
         super(description);
-        if (by.isBlank()) {
-            throw new IndexOutOfBoundsException();
-        }
-        this.by = by;
+        this.date = DateTimeParser.parseDateTime(by);
     }
 
     @Override
@@ -22,23 +23,23 @@ public class Deadline extends Task {
 
     @Override
     public String printDescription() {
-        return "["+ getTaskType() + "]" + super.printDescription() + " (by:" + by + ")";
+        return "["+ getTaskType() + "]" + super.printDescription() + " (by: " + getDate() + ")";
     }
 
-    public String getBy(){
-        return by;
+    public String getDate(){
+        return DateTimeParser.convertDateTime(date);
     }
 
-    public static void addDeadline(String argument) throws IndexOutOfBoundsException{
-        if (argument.isBlank()) {
-            throw new IndexOutOfBoundsException();
+    public static void addDeadline(String argument) {
+        try {
+            String[] arguments = Parser.parseArgument(argument, " /by ", 0);
+            Task deadlineObject = new Deadline(arguments[0], arguments[1]);
+            Duke.getTaskList().addTask(deadlineObject, false);
+        } catch (DukeException e) {
+            //Error printed in Duke exception
+        } catch (IndexOutOfBoundsException e) {
+            Duke.getUi().printBorder("Missing \"/by\" argument.\n");
         }
-        String[] arguments = Parser.parseArgument(argument, "/by", 0);
-        Task deadlineObject = new Deadline(arguments[0], arguments[1]);
-        if (arguments[1].isBlank()) {
-            throw new IndexOutOfBoundsException();
-        }
-        Duke.getTaskList().addTask(deadlineObject, false);
     }
 
 
