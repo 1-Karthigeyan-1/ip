@@ -5,12 +5,20 @@ import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
 
+/**
+ * Handles the data that is to be compiled into storage file
+ */
 public class CompilableData {
     private Task item;
     private String description;
     private String taskType;
     private String done;
 
+    /**
+     * Stores the item details in this class
+     *
+     * @param item A task object
+     */
     public CompilableData(Task item) {
         this.item = item;
         this.description = item.getDescription();
@@ -18,6 +26,11 @@ public class CompilableData {
         this.done = item.getStatusIcon();
     }
 
+    /**
+     *
+     * @return data of the task in the form of string
+     * @throws DukeException if the type of task is invalid
+     */
     public String CompileData() throws DukeException {
         String formattedData = String.format("%s , %s , %s", taskType, done, description);
         switch (taskType) {

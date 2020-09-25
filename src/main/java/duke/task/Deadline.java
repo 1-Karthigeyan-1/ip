@@ -7,10 +7,20 @@ import duke.Parser;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents the properties of deadline task.
+ */
 public class Deadline extends Task {
     protected LocalDateTime date;
     private static final String taskType = "D";
 
+    /**
+     * Stores details of deadline in the instance
+     *
+     * @param description description of deadline task
+     * @param by date and time
+     * @throws DukeException if blank arguments is given
+     */
     public Deadline(String description, String by) throws DukeException{
         super(description);
         this.date = DateTimeParser.parseDateTime(by);
@@ -26,10 +36,20 @@ public class Deadline extends Task {
         return "["+ getTaskType() + "]" + super.printDescription() + " (by: " + getDate() + ")";
     }
 
+    /**
+     * gets the date and time of object
+     *
+     * @return date and time of object
+     */
     public String getDate(){
         return DateTimeParser.convertDateTime(date);
     }
 
+    /**
+     * Add deadline task to the tasklist by parsing the arguments
+     *
+     * @param argument raw description of deadline
+     */
     public static void addDeadline(String argument) {
         try {
             String[] arguments = Parser.parseArgument(argument, " /by ", 0);

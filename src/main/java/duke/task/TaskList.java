@@ -5,13 +5,25 @@ import duke.DukeException;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the list of tasks stored in the program.
+ */
 public class TaskList {
     private ArrayList<Task> Tasks;
 
+    /**
+     * Creates new instacne of array list.
+     */
     public TaskList(){
         Tasks = new ArrayList<Task>();
     }
 
+    /**
+     * mark the specific task in list as completed.
+     *
+     * @param argument index number of task
+     * @throws DukeException if number is invalid
+     */
     public void markTaskinList(String argument) throws DukeException {
         int taskNumber = Integer.parseInt(argument);
         if ((taskNumber > this.getSize()) || (taskNumber <= 0)) {
@@ -23,7 +35,11 @@ public class TaskList {
         Duke.getUi().printBorder("Nice! I've marked this task as done:\n" + taskItem.printDescription() + "\n");
     }
 
-
+    /**
+     * Shows the list of tasks in program.
+     *
+     * @throws DukeException if the list is empty
+     */
     public void showList() throws DukeException {
         if (Tasks.size() == 0) {
             throw new DukeException("empty list");
@@ -35,6 +51,12 @@ public class TaskList {
         Duke.getUi().printBorder("Here are the tasks in your list:\n" + itemList);
     }
 
+    /**
+     * Adds task to the list.
+     *
+     * @param item task item to be added
+     * @param isReadOnly boolean to check if the task is to be saved in storage file
+     */
     public void addTask(Task item, boolean isReadOnly) {
         Tasks.add(item);
         if(!isReadOnly) {
@@ -43,6 +65,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * delete task in that index.
+     *
+     * @param argument the index of task to be deleted
+     */
     public void deleteTask(String argument) {
         try {
             String removalNotice = "Noted. I've removed this task:\n";
@@ -59,10 +86,21 @@ public class TaskList {
         }
     }
 
+    /**
+     * get task by its index
+     *
+     * @param index index of task
+     * @return task in that index
+     */
     public Task getTask(int index){
         return Tasks.get(index);
     }
 
+    /**
+     * gets size of tasklist
+     *
+     * @return size number
+     */
     public int getSize(){
         return Tasks.size();
     }
