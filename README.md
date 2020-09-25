@@ -73,4 +73,44 @@ Example: `done 2`
 Nice! I've marked this task as done:
 [E][✓] party (at: Dec 31 2020 23:00)
 ```
-
+### 6. Find task: `Find`
+Finds a list of tasks matching the keyword
+Format: `find <keyword>`
+Example: `find home`
+```
+Here are the tasks in your list:
+1. [T][✘] homework
+2. [T][✘] clean home
+```
+### 7. Remove task from list: `Delete`
+Deletes a task from list
+Format: `delete <number>`
+Example:
+List before deletion
+```
+Here are the tasks in your list:
+1. [T][✘] homework
+2. [E][✓] party (at: Dec 31 2020 23:00)
+3. [D][✘] assignment (by: Mar 03 2020 22:00)
+4. [T][✘] clean home
+```
+`delete 4`
+```
+Noted. I've removed this task:
+  [T][✘] clean home
+Now you have 3 tasks in the list
+```
+List after deletion
+```
+Here are the tasks in your list:
+1. [T][✘] homework
+2. [E][✓] party (at: Dec 31 2020 23:00)
+3. [D][✘] assignment (by: Mar 03 2020 22:00)
+```
+### 8. Exit the Duke program: `bye`
+Safely exits the Duke program
+Format: `bye`
+Example: `bye`
+```
+Bye. Hope to see you again soon!
+```
