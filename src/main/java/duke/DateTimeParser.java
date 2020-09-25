@@ -23,6 +23,4 @@ public class DateTimeParser {
         String date = dateTime.format(DateTimeFormatter.ofPattern("MMM dd yyy HH:mm"));
         return date;
     }
-
-
 }

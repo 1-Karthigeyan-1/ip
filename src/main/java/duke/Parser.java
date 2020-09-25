@@ -5,6 +5,7 @@ import duke.command.DeadlineCommand;
 import duke.command.DeleteCommand;
 import duke.command.DoneCommand;
 import duke.command.EventCommand;
+import duke.command.FindCommand;
 import duke.command.ListCommand;
 import duke.command.TodoCommand;
 
@@ -33,6 +34,9 @@ public class Parser {
             break;
         case ByeCommand.COMMAND_WORD:
             new ByeCommand();
+            break;
+        case FindCommand.COMMAND_WORD:
+            new FindCommand(arguments[1]);
             break;
         default:
             Duke.getUi().printBorder("Invalid command. Please try again.\n");
