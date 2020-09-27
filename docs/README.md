@@ -135,4 +135,4 @@ If no such file or directory is found, a new `data/tasks.txt` is created.
 | **Find** | `find <keyword>` |
 | **Delete** | `delete <number>` |
 | **Exit** | `bye` |
-
+{: .tablelines}
