@@ -120,6 +120,12 @@ Tasks data is stored in `data/tasks.txt` file.
 If no such file or directory is found, a new `data/tasks.txt` is created.  
 
 ## Command Summary  
+<style>
+.tablelines table, .tablelines td, .tablelines th {
+        border: 1px solid black;
+        }
+</style>
+
 |**Action** | **Format** |  
 | **Todo** | `todo <description>` | 
 | **Event** | `event <description> /at <date time>` | 
