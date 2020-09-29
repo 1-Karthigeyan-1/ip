@@ -1,5 +1,6 @@
-package duke;
+package duke.parse;
 
+import duke.Duke;
 import duke.command.ByeCommand;
 import duke.command.DeadlineCommand;
 import duke.command.DeleteCommand;
@@ -21,6 +22,7 @@ public class Parser {
      */
     public static void filterInput(String userInput) {
         String[] arguments = parseArgument(userInput, " ", 2);
+
         switch (arguments[0].toLowerCase()) {
         case ListCommand.COMMAND_WORD:
             new ListCommand(arguments);

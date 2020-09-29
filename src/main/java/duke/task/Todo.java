@@ -7,7 +7,7 @@ import duke.DukeException;
  * Represents the properties of todo task.
  */
 public class Todo extends Task{
-    private static final String taskType = "T";
+    private static final String TASK_TYPE = "T";
 
     /**
      * Stores details of todo in the instance
@@ -25,7 +25,7 @@ public class Todo extends Task{
 
     @Override
     public String getTaskType() {
-        return taskType;
+        return TASK_TYPE;
     }
 
     /**

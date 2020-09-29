@@ -1,9 +1,9 @@
 package duke.task;
 
-import duke.DateTimeParser;
+import duke.parse.DateTimeParser;
 import duke.Duke;
 import duke.DukeException;
-import duke.Parser;
+import duke.parse.Parser;
 
 import java.time.LocalDateTime;
 
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 public class Deadline extends Task {
     protected LocalDateTime date;
-    private static final String taskType = "D";
+    private static final String TASK_TYPE = "D";
 
     /**
      * Stores details of deadline in the instance
@@ -28,7 +28,7 @@ public class Deadline extends Task {
 
     @Override
     public String getTaskType() {
-        return taskType;
+        return TASK_TYPE;
     }
 
     @Override

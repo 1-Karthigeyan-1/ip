@@ -2,7 +2,7 @@ package duke.dataStorage;
 
 import duke.Duke;
 import duke.DukeException;
-import duke.Parser;
+import duke.parse.Parser;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;

@@ -1,9 +1,9 @@
 package duke.task;
 
-import duke.DateTimeParser;
+import duke.parse.DateTimeParser;
 import duke.Duke;
 import duke.DukeException;
-import duke.Parser;
+import duke.parse.Parser;
 
 import java.time.LocalDateTime;
 
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 public class Event extends Task {
     protected LocalDateTime date;
-    private static final String taskType = "E";
+    private static final String TASK_TYPE = "E";
 
 
     /**
@@ -35,7 +35,7 @@ public class Event extends Task {
 
     @Override
     public String getTaskType() {
-        return taskType;
+        return TASK_TYPE;
     }
 
     /**
