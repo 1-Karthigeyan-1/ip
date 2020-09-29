@@ -6,7 +6,7 @@ import duke.DukeException;
 /**
  * Represents the done command used in the user input
  */
-public class DoneCommand extends CommandArgument{
+public class DoneCommand extends Command {
     public static final String COMMAND_WORD = "done";
     private static final int MAX_LIMIT = 2;
 

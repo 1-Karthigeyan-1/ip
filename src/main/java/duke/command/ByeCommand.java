@@ -6,7 +6,7 @@ import duke.DukeException;
 /**
  * Represents the bye command used in the user input
  */
-public class ByeCommand extends CommandArgument{
+public class ByeCommand extends Command {
     public static final String COMMAND_WORD= "bye";
     private static final int MAX_LIMIT = 1;
 

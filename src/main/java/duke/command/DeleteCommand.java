@@ -6,7 +6,7 @@ import duke.DukeException;
 /**
  * Represents the delete command used in the user input
  */
-public class DeleteCommand extends CommandArgument{
+public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     private static final int MAX_LIMIT = 2;
 

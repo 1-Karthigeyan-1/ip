@@ -6,7 +6,7 @@ import duke.task.Event;
 /**
  * Represents the event command used in the user input
  */
-public class EventCommand extends CommandArgument{
+public class EventCommand extends Command {
     public static final String COMMAND_WORD = "event";
     private static final int MAX_LIMIT = 2;
 

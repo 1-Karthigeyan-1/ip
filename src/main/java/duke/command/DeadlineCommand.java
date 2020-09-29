@@ -6,7 +6,7 @@ import duke.task.Deadline;
 /**
  * Represents the deadline command used in the user input
  */
-public class DeadlineCommand extends CommandArgument{
+public class DeadlineCommand extends Command {
     public static final String COMMAND_WORD = "deadline";
     private static final int MAX_LIMIT = 2;
 

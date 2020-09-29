@@ -5,9 +5,9 @@ import duke.DukeException;
 /**
  * Represents the Command keyword that is used in the user input.
  */
-public abstract class CommandArgument {
+public abstract class Command {
 
-    public CommandArgument(String[] arguments) {
+    public Command(String[] arguments) {
         try {
             execute(arguments);
         } catch (DukeException e) {

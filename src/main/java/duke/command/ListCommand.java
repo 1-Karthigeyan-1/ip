@@ -6,7 +6,7 @@ import duke.DukeException;
 /**
  * Represents the list command used in the user input
  */
-public class ListCommand extends CommandArgument{
+public class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
     private static final int MAX_LIMIT = 1;
 

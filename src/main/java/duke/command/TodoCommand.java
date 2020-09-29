@@ -6,7 +6,7 @@ import duke.task.Todo;
 /**
  * Represents the todo command used in the user input
  */
-public class TodoCommand extends CommandArgument{
+public class TodoCommand extends Command {
     public static final String COMMAND_WORD = "todo";
     private static final int MAX_LIMIT = 2;
 

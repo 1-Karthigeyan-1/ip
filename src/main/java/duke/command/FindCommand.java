@@ -6,7 +6,7 @@ import duke.DukeException;
 /**
  * Represents the find command used in the user input
  */
-public class FindCommand extends CommandArgument{
+public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
     private static final int MAX_LIMIT = 2;
 
