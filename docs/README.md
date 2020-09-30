@@ -35,7 +35,7 @@ Got it. I've added this task:
 Adds a Event task  
 Format: `event <description> /at <date time>`  
 Supported date time formats: `dd/MM/yyyy HHmm` `MMM dd yyy HH:mm`  
-Example: `event party /at 31/12/2020 2300` or `Dec 31 2020 23:00`    
+Example: `event party /at 31/12/2020 2300` or `event party /at Dec 31 2020 23:00`    
 ```
 Got it. I've added this task:
 [E][✘] party (at: Dec 31 2020 23:00)
@@ -45,7 +45,7 @@ Got it. I've added this task:
 Adds a Deadline task  
 Format: `deadline <description> /at <date time>`  
 Supported date time formats: `dd/MM/yyyy HHmm` `MMM dd yyy HH:mm`  
-Example: `deadline assignment /by 03/03/2020 2200` or `Mar 03 2020 22:00`    
+Example: `deadline assignment /by 03/03/2020 2200` or `deadline assignment /by Mar 03 2020 22:00`    
 ```
 Got it. I've added this task:
 [D][✘] assignment (by: Mar 03 2020 22:00)
