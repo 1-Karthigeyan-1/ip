@@ -8,6 +8,11 @@ import java.util.Scanner;
 public class Ui {
     private Scanner in;
 
+    /**
+     * Creates a new instance of scanner
+     *
+     * returns userInput
+     */
     public Ui() {
         this.in = new Scanner(System.in);
     }
@@ -17,11 +22,7 @@ public class Ui {
      * @return user input
      */
     public String readCommand(){
-        String userInput = null;
-        if(in.hasNextLine()) {
-            userInput = in.nextLine();
-        }
-        return userInput;
+        return in.nextLine();
     }
 
     /**
