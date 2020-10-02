@@ -6,15 +6,21 @@ import java.util.Scanner;
  * Deals with interaction with the user
  */
 public class Ui {
+    private Scanner in;
 
+    public Ui() {
+        this.in = new Scanner(System.in);
+    }
     /**
      * Reads the user input
      *
      * @return user input
      */
     public String readCommand(){
-        Scanner in = new Scanner(System.in);
-        String userInput = in.nextLine();
+        String userInput = null;
+        if(in.hasNextLine()) {
+            userInput = in.nextLine();
+        }
         return userInput;
     }
 

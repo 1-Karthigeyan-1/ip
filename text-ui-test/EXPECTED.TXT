@@ -4,64 +4,68 @@ What can I do for you?
 ____________________________________________________________
 ____________________________________________________________
 Got it. I've added this task:
-[T][?] wash laundry
-____________________________________________________________
-____________________________________________________________
-Here are the tasks in your list:
-1. [T][?] wash laundry
+[T][✘] wash laundry
 ____________________________________________________________
 ____________________________________________________________
 Got it. I've added this task:
-[E][?] meeting  (at: Sunday 3am)
+[E][✘] meeting (at: May 20 2020 08:00)
 ____________________________________________________________
 ____________________________________________________________
 Got it. I've added this task:
-[D][?] homework  (by: tomorrow)
+[D][✘] assignment (by: Mar 03 2020 22:00)
 ____________________________________________________________
 ____________________________________________________________
 Here are the tasks in your list:
-1. [T][?] wash laundry
-2. [E][?] meeting  (at: Sunday 3am)
-3. [D][?] homework  (by: tomorrow)
+1. [T][✘] wash laundry
+2. [E][✘] meeting (at: May 20 2020 08:00)
+3. [D][✘] assignment (by: Mar 03 2020 22:00)
 ____________________________________________________________
 ____________________________________________________________
 Nice! I've marked this task as done:
-[E][?] meeting  (at: Sunday 3am)
+[E][✓] meeting (at: May 20 2020 08:00)
 ____________________________________________________________
 ____________________________________________________________
 Here are the tasks in your list:
-1. [T][?] wash laundry
-2. [E][?] meeting  (at: Sunday 3am)
-3. [D][?] homework  (by: tomorrow)
+1. [T][✘] wash laundry
+2. [E][✓] meeting (at: May 20 2020 08:00)
+3. [D][✘] assignment (by: Mar 03 2020 22:00)
 ____________________________________________________________
 ____________________________________________________________
 Got it. I've added this task:
-[T][?] homework
+[D][✘] work assignment (by: Mar 27 2020 22:00)
+____________________________________________________________
+____________________________________________________________
+Got it. I've added this task:
+[T][✘] homework
 ____________________________________________________________
 ____________________________________________________________
 Here are the tasks in your list:
-1. [T][?] wash laundry
-2. [E][?] meeting  (at: Sunday 3am)
-3. [D][?] homework  (by: tomorrow)
-4. [T][?] homework
+1. [T][✘] wash laundry
+2. [E][✓] meeting (at: May 20 2020 08:00)
+3. [D][✘] assignment (by: Mar 03 2020 22:00)
+4. [D][✘] work assignment (by: Mar 27 2020 22:00)
+5. [T][✘] homework
+____________________________________________________________
+____________________________________________________________
+Here are the tasks in your list:
+1. [D][✘] work assignment (by: Mar 27 2020 22:00)
+2. [T][✘] homework
 ____________________________________________________________
 ____________________________________________________________
 Nice! I've marked this task as done:
-[D][?] homework  (by: tomorrow)
+[D][✓] assignment (by: Mar 03 2020 22:00)
+____________________________________________________________
+____________________________________________________________
+Noted. I've removed this task:
+  [E][✓] meeting (at: May 20 2020 08:00)
+Now you have 4 tasks in the list
 ____________________________________________________________
 ____________________________________________________________
 Here are the tasks in your list:
-1. [T][?] wash laundry
-2. [E][?] meeting  (at: Sunday 3am)
-3. [D][?] homework  (by: tomorrow)
-4. [T][?] homework
-____________________________________________________________
-____________________________________________________________
-Here are the tasks in your list:
-1. [T][?] wash laundry
-2. [E][?] meeting  (at: Sunday 3am)
-3. [D][?] homework  (by: tomorrow)
-4. [T][?] homework
+1. [T][✘] wash laundry
+2. [D][✓] assignment (by: Mar 03 2020 22:00)
+3. [D][✘] work assignment (by: Mar 27 2020 22:00)
+4. [T][✘] homework
 ____________________________________________________________
 ____________________________________________________________
 Bye. Hope to see you again soon!

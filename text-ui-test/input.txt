@@ -1,15 +1,14 @@
 todo wash laundry
-list
-event meeting /at Sunday 3am
-deadline homework /by tomorrow
+event meeting /at 20/05/2020 0800
+deadline assignment /by 03/03/2020 2200
 list
 done 2
 list
+deadline work assignment /by Mar 27 2020 22:00
 todo homework
 list
+find work
 done 3
 delete 2
-list
-delete 1
 list
 bye
